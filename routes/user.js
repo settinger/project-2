@@ -5,6 +5,7 @@ const router = Router();
 const User = require('./../models/user')
 const allLanguages = require('./../controllers/allLanguages');
 const middleware = require('./../controllers/middleware');
+require('dotenv').config();
 
 
 router.get('/', (req, res, next) => {
@@ -36,7 +37,7 @@ router.post('/logout', middleware.ensureLoggedIn, (req, res, next) => {
 });
 
 router.get('/register',  middleware.ensureLoggedOut, (req, res, next) => {
-  res.render('register', {languages: allLanguages});
+  res.render('register', {languages: allLanguages, googMapsApiKey: process.env.GOOGMAPS_API_KEY});
 });
 
 router.post('/register', middleware.ensureLoggedOut, (req, res, next) => {
