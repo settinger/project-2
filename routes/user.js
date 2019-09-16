@@ -41,7 +41,7 @@ router.get('/register',  middleware.ensureLoggedOut, (req, res, next) => {
 });
 
 router.post('/register', middleware.ensureLoggedOut, (req, res, next) => {
-  const username = req.body.username;
+  const username = req.body.humanName;
   const email = req.body.email;
   const password = req.body.password;
   const language = req.body.language;
