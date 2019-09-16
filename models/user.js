@@ -1,5 +1,6 @@
 'use strict';
 
+const allLanguages = require('./../controllers/allLanguages');
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
@@ -19,7 +20,7 @@ const schema = new mongoose.Schema({
   },
   language: {
     type: String,
-    enum: ['English', 'Spanish', 'Portuguese']
+    enum: allLanguages
   },
   location: {
     type: [Number]
