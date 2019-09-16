@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/login', middleware.ensureLoggedOut, (req, res, next) => {
-  res.render('login')
+  res.render('login');
 });
 
 router.post('/login', middleware.ensureLoggedOut, (req, res, next) => {
