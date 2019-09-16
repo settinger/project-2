@@ -1,0 +1,36 @@
+<h1>Register New User</h1>
+
+{{#if errorMessage}}
+  <div class="alert alert-danger">
+    ERROR: {{errorMessage}}
+  </div>
+{{/if}}
+{{#if message}}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+{{/if}}
+
+<form method="POST" action="/user/register">
+  <div class="form-group">
+    <label for="register-username">Preferred name</label>
+    <input type="text" name="username" id="register-username"/>
+  </div>
+  <div class="form-group">
+    <label for="register-email">E-mail</label>
+    <input type="email" name="email" id="register-email" placeholder="e-mail address" required />
+  </div>
+  <div class="form-group">
+    <label for="register-password">Password</label>
+    <input type="password" name="password" id="register-password" placeholder="A Safe Password" required />
+  </div>
+  <div class="form-group">
+    <label for="register-role">Language of interest:</label>
+    <select id="register-role" name="role">
+      {{#each languages}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <button>Register user</button>
+</form>
