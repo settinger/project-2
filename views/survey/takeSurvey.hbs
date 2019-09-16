@@ -1,0 +1,19 @@
+<h1>{{question}}</h1>
+
+{{#if errorMessage}}
+  <div class="alert alert-danger">
+    ERROR: {{errorMessage}}
+  </div>
+{{/if}}
+{{#if message}}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+{{/if}}
+
+{{!-- for each option, a radio button --}}
+<ul>
+{{#each options}}
+  <li>{{this}}</li>
+{{/each}}
+</ul>
