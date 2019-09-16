@@ -29,6 +29,6 @@ const schema = new mongoose.Schema({
 // Add log-in and sign-up functions as schema statics
 schema.statics = schema.statics || {};
 schema.statics.logIn = require('./user-local-login');
-schema.statics.signUp = require('./user-local-signup');
+schema.statics.register = require('./user-local-register');
 
 module.exports = mongoose.model('User', schema);
