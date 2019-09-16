@@ -8,6 +8,7 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 
+const expressSession = require('express-session');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
 const surveyRouter = require('./routes/survey');

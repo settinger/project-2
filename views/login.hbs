@@ -1,0 +1,25 @@
+<h1>LOG IN</h1>
+
+{{#if errorMessage}}
+  <div class="alert alert-danger">
+    ERROR: {{errorMessage}}
+  </div>
+{{/if}}
+{{#if message}}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+{{/if}}
+
+<form method="POST" action="/user/login">
+  <div class="form-group">
+    <label for="login-user">Username</label>
+    <input type="text" name="username" id="login-user"/>
+  </div>
+  <div class="form-group">
+    <label for="login-pass">Password</label>
+    <input type="password" name="password" id="login-pass" required />
+  </div>
+ 
+  <button>Enter</button>
+</form>
