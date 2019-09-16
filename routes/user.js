@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 const User = require('./../models/user')
+const allLanguages = require('./../controllers/allLanguages');
 
 
 router.get('/', (req, res, next) => {
@@ -29,7 +30,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/register', (req, res, next) => {
-  res.render('register')
+  res.render('register', {languages: allLanguages})
 });
 
 router.post('/register', (req, res, next) => {
