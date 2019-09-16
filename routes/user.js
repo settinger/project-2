@@ -30,7 +30,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/register', (req, res, next) => {
-  res.render('register', {languages: allLanguages})
+  res.render('register', {languages: allLanguages});
 });
 
 router.post('/register', (req, res, next) => {
@@ -46,7 +46,7 @@ router.post('/register', (req, res, next) => {
       res.render('user');
     })
     .catch(error => {
-      res.status(550).send('CREDENTIALS WONG', error);
+      res.status(401).send('CREDENTIALS WONG', error);
     });
 });
 
