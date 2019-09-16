@@ -29,6 +29,11 @@ router.post('/login', (req, res, next) => {
     });
 });
 
+router.post('/logout', (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/');
+});
+
 router.get('/register', (req, res, next) => {
   res.render('register', {languages: allLanguages});
 });
@@ -40,7 +45,6 @@ router.post('/register', (req, res, next) => {
   const language = req.body.language;
   const latitude = req.body.latitude;
   const longitude = req.body.longitude;
-  console.log(req.body)
 
   User.register(username, email, password, language, latitude, longitude) 
     .then(user => {
