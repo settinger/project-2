@@ -33,8 +33,8 @@ function startMap() {
   
   map.addListener('center_changed', () => {
     // console.log(map.getCenter().lat());
-    const $latitude = document.getElementById("lat-span");
-    const $longitude = document.getElementById("lon-span");
+    const $latitude = document.getElementById("register-latitude");
+    const $longitude = document.getElementById("register-longitude");
     langMarker.setPosition(map.getCenter());
     let lat = map.getCenter().lat();
     let lon = map.getCenter().lng();
@@ -45,8 +45,8 @@ function startMap() {
     while(lon < -180) { lon += 360; };
     while(lon > 180) {lon -= 360; };
 
-    $latitude.innerText = lat.toFixed(2);
-    $longitude.innerText = lon.toFixed(2);
+    $latitude.value = lat.toFixed(2);
+    $longitude.value = lon.toFixed(2);
   });
 
 

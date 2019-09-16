@@ -25,7 +25,7 @@ router.post('/login', (req, res, next) => {
       res.render('user');
     })
     .catch(error => {
-      res.status(550).send('CREDENTIALS WRONG', error);
+      res.status(401).send('CREDENTIALS WRONG', error);
     });
 });
 
@@ -40,14 +40,15 @@ router.post('/register', (req, res, next) => {
   const language = req.body.language;
   const latitude = req.body.latitude;
   const longitude = req.body.longitude;
+  console.log(req.body)
 
-  User.logIn(username, email, password, language, latitude, longitude) 
+  User.register(username, email, password, language, latitude, longitude) 
     .then(user => {
       req.session.user = {_id: user._id, username: user.username};
       res.render('user');
     })
     .catch(error => {
-      res.status(401).send('CREDENTIALS WONG', error);
+      res.status(401).send('CREDENTIALS WRONG', error);
     });
 });
 
