@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcryptjs');
 
-const signUp = function(name, email, password, language, location) {
+const register = function(name, email, password, language, location) {
   const Model = this;
 
   return Model.findOne({ email })
@@ -31,4 +31,4 @@ const signUp = function(name, email, password, language, location) {
     });
 };
 
-module.exports = signUp;
+module.exports = register;
