@@ -4,6 +4,7 @@ const { Router } = require('express');
 const router = Router();
 const User = require('./../models/user')
 
+
 router.get('/', (req, res, next) => {
   res.render('user', { name: 'James Dean' });
 });
@@ -18,6 +19,27 @@ router.post('/login', (req, res, next) => {
   const password = req.body.password;
 
   User.logIn(username, password) 
+    .then(user => {
+      req.session.user = {_id: user._id, username: user.username};
+      res.render('user');
+    })
+    .catch(error => {
+      res.status(550).send('CREDENTIALS WONG', error);
+    });
+});
+
+router.get('/register', (req, res, next) => {
+  res.render('register')
+});
+
+router.post('/register', (req, res, next) => {
+  const username = req.body.username;
+  const email = req.body.email;
+  const password = req.body.password;
+  const language = req.body.language;
+  const location = req.body.location;
+
+  User.logIn(username, email, password, language, location) 
     .then(user => {
       req.session.user = {_id: user._id, username: user.username};
       res.render('user');
