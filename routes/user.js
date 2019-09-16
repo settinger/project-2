@@ -4,6 +4,7 @@ const { Router } = require('express');
 const router = Router();
 const User = require('./../models/user')
 const allLanguages = require('./../controllers/allLanguages');
+const middleware = require('./../controllers/middleware');
 
 
 router.get('/', (req, res, next) => {
@@ -11,11 +12,11 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.get('/login', (req, res, next) => {
+router.get('/login', middleware.ensureLoggedOut, (req, res, next) => {
   res.render('login')
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', middleware.ensureLoggedOut, (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -29,16 +30,16 @@ router.post('/login', (req, res, next) => {
     });
 });
 
-router.post('/logout', (req, res, next) => {
+router.post('/logout', middleware.ensureLoggedIn, (req, res, next) => {
   req.session.destroy();
   res.redirect('/');
 });
 
-router.get('/register', (req, res, next) => {
+router.get('/register',  middleware.ensureLoggedOut, (req, res, next) => {
   res.render('register', {languages: allLanguages});
 });
 
-router.post('/register', (req, res, next) => {
+router.post('/register', middleware.ensureLoggedOut, (req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
