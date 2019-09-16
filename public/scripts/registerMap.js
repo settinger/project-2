@@ -36,8 +36,17 @@ function startMap() {
     const $latitude = document.getElementById("lat-span");
     const $longitude = document.getElementById("lon-span");
     langMarker.setPosition(map.getCenter());
-    $latitude.innerText = map.getCenter().lat().toFixed(2);
-    $longitude.innerText = map.getCenter().lng().toFixed(2);
+    let lat = map.getCenter().lat();
+    let lon = map.getCenter().lng();
+    // Keep lat within range [-90.00, 90.00]
+    while(lat < -90) { lat += 180; };
+    while(lat > 90) {lat -= 180; };
+    // Keep lon within range [-180, 180]
+    while(lon < -180) { lon += 360; };
+    while(lon > 180) {lon -= 360; };
+
+    $latitude.innerText = lat.toFixed(2);
+    $longitude.innerText = lon.toFixed(2);
   });
 
 
