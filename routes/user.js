@@ -22,7 +22,7 @@ router.post('/login', (req, res, next) => {
   User.logIn(username, password) 
     .then(user => {
       req.session.user = {_id: user._id, username: user.username};
-      res.render('user');
+      res.redirect('/user');
     })
     .catch(error => {
       res.status(401).send('CREDENTIALS WRONG', error);
@@ -49,7 +49,7 @@ router.post('/register', (req, res, next) => {
   User.register(username, email, password, language, latitude, longitude) 
     .then(user => {
       req.session.user = {_id: user._id, username: user.username};
-      res.render('user');
+      res.redirect('/user');
     })
     .catch(error => {
       res.status(401).send('CREDENTIALS WRONG', error);
