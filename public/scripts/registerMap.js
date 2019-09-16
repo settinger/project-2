@@ -58,8 +58,7 @@ function startMap() {
       };
 
       // Center map with user location
-      // map.setCenter(user_location);
-
+      map.setCenter(user_location);
 
     }, function () {
       map.setCenter(euroCenter)

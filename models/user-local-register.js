@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcryptjs');
 
-const register = function(name, email, password, language, location) {
+const register = function(name, email, password, language, latitude, longitude) {
   const Model = this;
 
   return Model.findOne({ email })
@@ -19,7 +19,7 @@ const register = function(name, email, password, language, location) {
         email: email,
         passwordHash: hash,
         language: language,
-        location: location
+        location: [latitude, longitude]
       });
     })
     .then(user => {
