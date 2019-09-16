@@ -24,6 +24,10 @@ const schema = new mongoose.Schema({
   },
   location: {
     type: [Number]
+  },
+  surveysTaken: {
+    type: [String],
+    default: []
   }
 });
 
