@@ -65,7 +65,6 @@ function startMap() {
 
 const map = startMap();
 
-const iconBase = 'https://maps.google.com/mapfiles/kml/paddle/';
 for (let response of results) {
   let lat = response[0];
   let lng = response[1];
@@ -78,4 +77,15 @@ for (let response of results) {
     icon: icons[response[2]],
     clickable: false
   })
+}
+
+// Draw the legend
+const $legend = document.getElementById('legend');
+for (let i=0; i<options.length; i++) {
+  option = options[i];
+  icon = icons[i];
+  let $newLegendItem = document.createElement("div");
+  $newLegendItem.setAttribute("style", "background-color: white;")
+  $newLegendItem.innerHTML = `<img src="${icon}"/>${option}`;
+  $legend.appendChild($newLegendItem);
 }

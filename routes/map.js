@@ -19,6 +19,7 @@ router.get('/:id', (req, res, next) => {
   const surveyId = req.params.id;
   Survey.findById(surveyId)
     .then(survey => {
+      data.question = survey.question;
       data.surveyResults = JSON.stringify(survey.responses);
       data.surveyOptions = JSON.stringify(survey.options);
       res.render('map/result', data);
