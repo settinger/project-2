@@ -22,6 +22,17 @@ body {
     }
   }
 
+  .navbar-nav{
+    display: flex;
+    flex-direction: row;
+    
+  }
+
+  .navlinks {
+    display: flex;
+    justify-content: space-between;
+  }
+
 }
 
 
