@@ -8,7 +8,7 @@ const uri = process.env.MONGODB_URI;
 
 
 
-
+/*
 let question = "What do you call the meal you eat in the evening, normally somewhere between 5 and 10 PM?";
 let options = ["dinner",
 "either dinner or supper; I don't distinguish the two",
@@ -48,10 +48,11 @@ let responses = [[59.91,10.75,0],
 [41.0317,-73.5882,0],
 [40.3624,-73.9881,0],
 [41.3858,-72.2482,1]];
+*/
 
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
   .then(() => {
-    Survey.create([{question: question, options: options, createdBy: createdBy, language: language, responses: responses}])
+    Survey.create([{question, options, createdBy, language, responses}])
     .then(survey => {
       console.log("survey");
     } )
