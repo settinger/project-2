@@ -11,6 +11,38 @@
 
 <body>
   
+<nav class="navbar navbar-light bg-light">
+{{#if user}}
+<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/user">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">My Maps</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/update">My Preferences</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="POST" action="/user/logout">
+      <button id="nav-button">LOG OUT</button>
+    </form>
+  </div>
+{{else}}
+ <form class="form-inline" method="POST" action="/user/login">
+    <div class="login-bars">
+      <input type="text" class="form-control" placeholder="E-mail" name="email" aria-describedby="basic-addon1" required>
+      <input type="password" class="form-control" placeholder="Password" name="password" aria-describedby="basic-addon1" required>
+    </div>
+    <button id="nav-button">LOG IN</button>
+  </form>
+  <form method="GET" action="/user/register">
+    <button id="nav-button">REGISTER</button>
+</form>
+{{/if}}
+</nav>
+
   {{{body}}}
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

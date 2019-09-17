@@ -11,6 +11,7 @@ require('dotenv').config();
 Base user page: this should show a list of surveys available
   for taking, and a list of maps available for viewing
 */
+
 router.get('/', (req, res, next) => {
   res.render('user', { name: 'James Dean' });
 });
