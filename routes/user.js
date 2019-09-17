@@ -92,4 +92,31 @@ router.get('/update', middleware.ensureLoggedIn, (req, res, next) => {
     });
 });
 
+router.post('/update', middleware.ensureLoggedIn, (req, res, next) => {
+  // console.log(req.body);
+  const data = {
+    languages: allLanguages,
+    googMapsApiKey: process.env.GOOGMAPS_API_KEY
+  };
+  const userId = req.session.user._id;
+  const name = req.body.humanName;
+  const language = req.body.language;
+  const location = [req.body.latitude, req.body.longitude];
+
+  User.findByIdAndUpdate(userId, {name, language, location})
+    .then(user => {
+      data.message = "Preferences updated.";
+      data.currName = name;
+      data.currLang = language;
+      data.currLat = req.body.latitude;
+      data.currLng = req.body.longitude;
+      res.render('update', data);
+    })
+    .catch(err => {
+      data.message = "Error updating preferences.";
+      res.render('update', data);
+    });
+  // res.redirect('/user/update');
+});
+
 module.exports = router;

@@ -1,6 +1,6 @@
 let $langSelector = document.getElementById("register-language");
 let $langSpan = document.getElementById("selected-language");
-$langSpan.innerText = $langSelector.value;
+// $langSpan.innerText = $langSelector.value;
 $langSelector.addEventListener('change', () => {
   $langSpan.innerText = $langSelector.value;
 })
