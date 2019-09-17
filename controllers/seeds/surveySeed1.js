@@ -1,14 +1,12 @@
 'use strict';
 require('dotenv').config()
 const mongoose = require('mongoose')
-const Survey = require('./../../models/survey');
+const Survey = require('../../models/survey');
 
 mongoose.set('useCreateIndex', true);
 const uri = process.env.MONGODB_URI;
 
 
-
-/*
 let question = "What do you call the meal you eat in the evening, normally somewhere between 5 and 10 PM?";
 let options = ["dinner",
 "either dinner or supper; I don't distinguish the two",
@@ -62,4 +60,3 @@ mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
   .catch(err => {
     console.log('error connecting', err);
   });
-*/

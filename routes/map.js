@@ -6,7 +6,7 @@ const router = Router();
 
 
 router.get('/:id', (req, res, next) => {
-  res.render('map', { title: `Look at this dialect map of the word potato ${req.params.id}`});
+  res.render('map/map', { title: `Look at this dialect map of the word potato ${req.params.id}`});
 });
 
 
