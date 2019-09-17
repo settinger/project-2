@@ -1,4 +1,4 @@
-<h1>Register New User</h1>
+<h1 class="register-title">Join the millions of Omnilect!</h1>
 
 {{#if errorMessage}}
 <div class="alert alert-danger">
@@ -15,16 +15,16 @@
 <div id="section-data">
 
     <div class="form-group">
-      <label for="register-email">E-mail</label>
+      <label for="register-email">Enter your email</label>
       <input type="email" name="email" id="register-email" placeholder="e-mail address" required />
     </div>
     <div class="form-group">
-      <label for="register-password">Password</label>
-      <input type="password" name="password" id="register-password" placeholder="A Safe Password" required />
+      <label for="register-password">Choose a password</label>
+      <input type="password" name="password" id="register-password" placeholder="A safe one" required />
     </div>
     <div class="form-group">
-      <label for="register-human-name">Preferred name</label>
-      <input type="text" name="humanName" id="register-human-name" />
+      <label for="register-human-name">Your name</label>
+      <input type="text" name="humanName" id="register-human-name" placeholder="e.g. Noam Chomsky" />
     </div>
     <div class="form-group">
       <label for="register-language">Language of interest:</label>
@@ -37,14 +37,14 @@
     <div class="form-group">
       <label for="register-role">Where did you learn <span id="selected-language">your language of interest</span>?
         Drag/zoom the map to move the marker.</label></div>
-  <button>Register user</button>
+  <button id="reg-button">JOIN NOW</button>
 </div>
 
 <div id="section-map">
 
-    <div id="map"></div>
     <label for="register-latitude">Latitude: </label><input readonly id="register-latitude" name="latitude" />
     <label for="register-longitude">Longitude: </label><input readonly id="register-longitude" name="longitude">
+    <div id="map"></div>
 
 </div>
 

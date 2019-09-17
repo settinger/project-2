@@ -7,6 +7,7 @@ body {
   padding: 0px;
   font-family: $font-sans;
   background-color: #97defc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   .navbar {
     display: flex;
@@ -21,7 +22,7 @@ body {
       border-radius: 5px;
       color: white;
 
-      :hover { background-color: #060038}
+      &:hover { background-color: #060038}
     }
   }
 
@@ -44,13 +45,34 @@ body {
 
 }
 
+#section-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+  #reg-button {
+      padding: 7px;
+      margin: 0px 4px;
+      background-color: #e8613f;
+      border-style: none;
+      border-radius: 5px;
+      color: white;
+
+      &:hover { background-color: #060038}
+  }
+}
+
+.register-title {
+  margin: 20px;
+}
+
 .registration-sections {
   display: flex;
   justify-content: space-evenly;
   #section-map {
     #map {
-      width: 550px;
-      height: 550px;
+      width: 40vw;
+      height: 60vh;
     }
   }
 }

@@ -2,7 +2,8 @@ body {
   margin: 0;
   padding: 0px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #97defc; }
+  background-color: #97defc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   body .navbar {
     display: flex;
     justify-content: space-between;
@@ -14,7 +15,7 @@ body {
       border-style: none;
       border-radius: 5px;
       color: white; }
-      body .navbar #nav-button :hover {
+      body .navbar #nav-button:hover {
         background-color: #060038; }
   body .navbar-nav {
     display: flex;
@@ -28,12 +29,30 @@ body {
       font-size: 1.5em;
       color: white; }
 
+#section-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh; }
+  #section-data #reg-button {
+    padding: 7px;
+    margin: 0px 4px;
+    background-color: #e8613f;
+    border-style: none;
+    border-radius: 5px;
+    color: white; }
+    #section-data #reg-button:hover {
+      background-color: #060038; }
+
+.register-title {
+  margin: 20px; }
+
 .registration-sections {
   display: flex;
   justify-content: space-evenly; }
   .registration-sections #section-map #map {
-    width: 550px;
-    height: 550px; }
+    width: 40vw;
+    height: 60vh; }
 
 a {
   color: #fcfcfc; }
