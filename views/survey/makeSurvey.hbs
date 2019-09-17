@@ -1,0 +1,63 @@
+<h1>Make a new survey</h1>
+
+<form id="make-survey">
+  <div class="form-group">
+    <label for="survey-question">Survey question: </label>
+    <input type="text" name="survey-question" id="survey-question" required />
+  </div>
+  <div class="form-group">
+    <label for="survey-language">Survey language: </label>
+    <select id="survey-language" name="language">
+      {{#each languages}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="response1">First option: </label>
+    <input type="text" name="response1" id="response1" required />
+  </div>
+  <div class="form-group">
+    <label for="response2">Second option: </label>
+    <input type="text" name="response2" id="response2" required />
+  </div>
+  <div id="extender"><a href="#">Click to add additional responses</a></div>
+  <button>Submit new survey question</button>
+</form>
+
+<script>
+  let numResponses = 2;
+  const $form = document.getElementById('make-survey');
+  const $extender = document.getElementById('extender');
+  let $newItem;
+  $extender.addEventListener('click', () => {
+    numResponses++;
+    switch(numResponses) {
+      case 3:
+        $newItem = document.createElement("div");
+        $newItem.classList += "form-group";
+        $newItem.innerHTML = `<label for="response3">Third option: </label>\n<input type="text" name="response3" id="response3" />`;
+        $extender.before($newItem);
+        break;
+      case 4:
+        $newItem = document.createElement("div");
+        $newItem.classList += "form-group";
+        $newItem.innerHTML = `<label for="response4">Fourth option: </label>\n<input type="text" name="response4" id="response4" />`;
+        $extender.before($newItem);
+        break;
+      case 5:
+        $newItem = document.createElement("div");
+        $newItem.classList += "form-group";
+        $newItem.innerHTML = `<label for="response5">Fifth option: </label>\n<input type="text" name="response5" id="response5" />`;
+        $extender.before($newItem);
+        break;
+      case 6:
+        $newItem = document.createElement("div");
+        $newItem.classList += "form-group";
+        $newItem.innerHTML = `<label for="response6">Sixth option: </label>\n<input type="text" name="response6" id="response6" />`;
+        $extender.before($newItem);
+        $extender.remove();
+        break;
+    }
+  });
+</script>
