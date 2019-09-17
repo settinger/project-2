@@ -1,8 +1,18 @@
 body {
   margin: 0;
-  padding: 500px;
+  padding: 0px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: whitesmoke; }
+  background-color: #a1edc0; }
+  body .navbar {
+    display: flex;
+    justify-content: flex-end; }
+    body .navbar #nav-button {
+      padding: 7px;
+      margin: 0px 4px;
+      background-color: green;
+      border-style: none;
+      border-radius: 5px;
+      color: whitesmoke; }
 
 a {
   color: #00b7ff; }

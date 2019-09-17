@@ -4,9 +4,23 @@ $link-color: #00b7ff;
 
 body {
   margin: 0;
-  padding: 500px;
+  padding: 0px;
   font-family: $font-sans;
-  background-color: whitesmoke;
+  background-color: #a1edc0;
+
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+
+    #nav-button {
+      padding: 7px;
+      margin: 0px 4px;
+      background-color: green;
+      border-style: none;
+      border-radius: 5px;
+      color: whitesmoke;
+    }
+  }
 }
 
 a {

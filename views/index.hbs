@@ -1,17 +1,20 @@
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline" method="POST" action="/user/login">
+    <div class="login-bars">
+      <input type="text" class="form-control" placeholder="E-mail" name="email" aria-describedby="basic-addon1" required>
+      <input type="password" class="form-control" placeholder="Password" name="password" aria-describedby="basic-addon1" required>
+    </div>
+    <button id="nav-button">LOG IN</button>
+  </form>
+  <form method="GET" action="/user/register">
+    <button id="nav-button">REGISTER</button>
+</form>
+</nav>
+
+
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
-<nav class="navbar navbar-light bg-light">
-  <form class="form-inline" method="POST" action="/user/login">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="E-mail" name="email" aria-describedby="basic-addon1">
-      <input type="password" class="form-control" placeholder="Password" name="password" aria-describedby="basic-addon1" required>
-    </div>
-    <button id="login-button">LOG IN</button>
-  </form>
-</nav>
 
-<form method="GET" action="/user/register">
-    <button id="register-button">REGISTER</button>
-</form>
+
 </div>
