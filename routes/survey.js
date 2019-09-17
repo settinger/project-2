@@ -45,7 +45,7 @@ router.get('/:id', middleware.ensureLoggedIn, (req, res, next) => {
 
 router.post('/:id', middleware.ensureLoggedIn, (req, res, next) => {
   const surveyId = req.params.id;
-  const surveyAnswer = req.body.surveyresult;
+  const surveyAnswer = parseInt(req.body.surveyresult);
   const userId = req.session.user;
   Survey.findById(surveyId)
     .then(survey => {
