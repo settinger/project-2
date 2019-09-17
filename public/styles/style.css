@@ -13,6 +13,9 @@ body {
       border-style: none;
       border-radius: 5px;
       color: whitesmoke; }
+  body .user-nav-links {
+    display: flex;
+    flex-direction: row; }
 
 a {
   color: #00b7ff; }
