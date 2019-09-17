@@ -75,6 +75,7 @@ for (let response of results) {
       lng: lng
     },
     map: map,
-    icon: '/images/bluedisk.png'
+    icon: icons[response[2]],
+    clickable: false
   })
 }
