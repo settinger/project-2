@@ -18,12 +18,12 @@ router.get('/login', middleware.ensureLoggedOut, (req, res, next) => {
 });
 
 router.post('/login', middleware.ensureLoggedOut, (req, res, next) => {
-  const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
 
-  User.logIn(username, password) 
+  User.logIn(email, password) 
     .then(user => {
-      req.session.user = {_id: user._id, username: user.username};
+      req.session.user = {_id: user._id, email: user.email};
       res.redirect('/user');
     })
     .catch(error => {

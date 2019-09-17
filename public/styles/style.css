@@ -1,7 +1,8 @@
 body {
   margin: 0;
-  padding: 50px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  padding: 500px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: whitesmoke; }
 
 a {
   color: #00b7ff; }
