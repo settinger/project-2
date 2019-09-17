@@ -47,6 +47,12 @@ app.use(expressSession({
   })
 }));
 
+// Custom piece of middleware: Whenever a cookie is set, make it accessible to handlebars
+app.use((req, res, next) => {
+  res.locals.user = req.session.user;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 app.use('/survey', surveyRouter);
