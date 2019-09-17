@@ -48,7 +48,6 @@ let responses = [[59.91,10.75,0],
 [41.0317,-73.5882,0],
 [40.3624,-73.9881,0],
 [41.3858,-72.2482,1]];
-*/
 
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
   .then(() => {
@@ -63,3 +62,4 @@ mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
   .catch(err => {
     console.log('error connecting', err);
   });
+*/

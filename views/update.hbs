@@ -1,0 +1,41 @@
+<h1>Update user preferences</h1>
+
+{{#if errorMessage}}
+  <div class="alert alert-danger">
+    ERROR: {{errorMessage}}
+  </div>
+{{/if}}
+{{#if message}}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+{{/if}}
+
+<form method="POST" action="/user/register">
+  <div class="form-group">
+    <label for="register-human-name">Preferred name</label>
+    <input type="text" name="humanName" id="register-human-name" value="{{currName}}"/>
+  </div>
+  <div class="form-group">
+    <label for="register-language">Language of interest:</label>
+    <select id="register-language" name="language">
+      {{#each languages}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="register-role">Where did you learn <span id="selected-language">your language of interest</span>? Drag/zoom the map to move the marker.</label>
+    <div id="map" style="height: 500px; width: 500px;"></div>
+    <label for="register-latitude">Latitude: </label><input readonly id="register-latitude" name="latitude" value="{{currLat}}"/><br/>
+    <label for="register-longitude">Longitude: </label><input readonly id="register-longitude" name="longitude" value="{{currLng}}"/>
+  </div>
+  <button>Update preferences</button>
+</form>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{googMapsApiKey}}"></script>
+<script type="text/javascript" src="/scripts/updateMap.js"></script>
+<script type="text/javascript">
+  const $selector = document.getElementById("register-language");
+  $selector.value="{{currLang}}";
+</script>

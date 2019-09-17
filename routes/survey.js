@@ -14,7 +14,8 @@ router.get('/', (req, res, next) => {
 /* GET/POST methods for URLs of the form /survey/:id */
 router.get('/:id', middleware.ensureLoggedIn, (req, res, next) => {
   const surveyId = req.params.id;
-  const userId = req.session.user;
+  const userId = req.session.user._id;
+  console.log(req.session.user._id);
   Survey.findById(surveyId)
     .then(survey => {
       // Ensure user has not taken survey
