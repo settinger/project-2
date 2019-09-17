@@ -4,12 +4,20 @@ const { Router } = require('express');
 const router = Router();
 const Survey = require('./../models/survey');
 const User = require('./../models/user');
+const allLanguages = require('./../controllers/allLanguages');
 const middleware = require('./../controllers/middleware');
 const makeRadioSurvey = require('./../controllers/makeRadioSurvey');
 
 router.get('/', (req, res, next) => {
   res.render('survey/surveyMain');
 });
+
+
+/* Make-survey page */
+router.get('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
+  res.render('survey/makeSurvey', {languages: allLanguages});
+});
+
 
 /* GET/POST methods for URLs of the form /survey/:id */
 router.get('/:id', middleware.ensureLoggedIn, (req, res, next) => {
@@ -22,7 +30,7 @@ router.get('/:id', middleware.ensureLoggedIn, (req, res, next) => {
       // Nested promises, sorry not sorry
       User.findById(userId)
         .then(user => {
-          if(user.surveysTaken.includes(surveyId)) {
+          if (user.surveysTaken.includes(surveyId)) {
             res.redirect(`/map/${surveyId}`);
           } else {
             // Don't pass the responses when rendering the survey page (because it might be a huge array)
@@ -53,7 +61,7 @@ router.post('/:id', middleware.ensureLoggedIn, (req, res, next) => {
       // Nested promises, sorry not sorry
       User.findById(userId)
         .then(user => {
-          if(user.surveysTaken.includes(surveyId)) {
+          if (user.surveysTaken.includes(surveyId)) {
             res.redirect(`/map/${surveyId}`);
           } else {
             // Update user in database to include the fact that this survey has been taken
@@ -78,10 +86,8 @@ router.post('/:id', middleware.ensureLoggedIn, (req, res, next) => {
     })
     .catch(err => {
       res.render('survey/takeSurvey', {errorMessage: `Survey problem.`});
-    })
-})
-
-
+    });
+});
 
 
 module.exports = router;

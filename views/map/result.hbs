@@ -1,8 +1,12 @@
-<div id="map" style="height: 70vh; width: 70vw; margin-left:15vh;"></div>
+<h1>{{question}}</h1>
+
+<div id="legend" style="width: 70vw; margin-left:15vw; margin-bottom: 1em; display: flex; justify-content:space-around"></div>
+<div id="map" style="height: 70vh; width: 70vw; margin-left:15vw;"></div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{googMapsApiKey}}"></script>
 <script>
-  const options = {{{surveyOptions}}}
-  const results = {{{surveyResults}}}
+  const options = {{{surveyOptions}}};
+  const results = {{{surveyResults}}};
+  const icons = ['/images/bluedisk.png', '/images/greendisk.png', '/images/reddisk.png', '/images/cyandisk.png', '/images/yellowdisk.png', '/images/magentadisk.png'];
 </script>
 <script type="text/javascript" src="/scripts/linguisticMap.js"></script>
