@@ -2,25 +2,40 @@ body {
   margin: 0;
   padding: 0px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #a1edc0; }
+  background-color: #97defc; }
   body .navbar {
     display: flex;
-    justify-content: flex-end; }
+    justify-content: space-between;
+    background-color: #4d87e3; }
     body .navbar #nav-button {
       padding: 7px;
       margin: 0px 4px;
-      background-color: green;
+      background-color: #e8613f;
       border-style: none;
       border-radius: 5px;
-      color: whitesmoke; }
+      color: white; }
+      body .navbar #nav-button :hover {
+        background-color: #060038; }
   body .navbar-nav {
     display: flex;
     flex-direction: row; }
   body .navlinks {
     display: flex;
     justify-content: space-between; }
+    body .navlinks .nav-item {
+      padding-right: 30px;
+      padding-bottom: 0;
+      font-size: 1.5em;
+      color: white; }
+
+.registration-sections {
+  display: flex;
+  justify-content: space-evenly; }
+  .registration-sections #section-map #map {
+    width: 550px;
+    height: 550px; }
 
 a {
-  color: #00b7ff; }
+  color: #fcfcfc; }
 
 /*# sourceMappingURL=style.css.map */

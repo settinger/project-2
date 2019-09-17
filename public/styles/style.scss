@@ -1,40 +1,59 @@
 $font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$link-color: #00b7ff;
+$link-color: #fcfcfc;
 
 
 body {
   margin: 0;
   padding: 0px;
   font-family: $font-sans;
-  background-color: #a1edc0;
+  background-color: #97defc;
 
   .navbar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    background-color: #4d87e3;
 
     #nav-button {
       padding: 7px;
       margin: 0px 4px;
-      background-color: green;
+      background-color: #e8613f;
       border-style: none;
       border-radius: 5px;
-      color: whitesmoke;
+      color: white;
+
+      :hover { background-color: #060038}
     }
   }
 
   .navbar-nav{
     display: flex;
     flex-direction: row;
-    
   }
 
   .navlinks {
     display: flex;
     justify-content: space-between;
+
+    .nav-item {
+       padding-right: 30px;
+       padding-bottom: 0;
+       font-size: 1.5em;
+       color: white;
+     }
   }
 
 }
 
+.registration-sections {
+  display: flex;
+  justify-content: space-evenly;
+  #section-map {
+    #map {
+      width: 550px;
+      height: 550px;
+    }
+  }
+}
 
 a {
   color: $link-color;

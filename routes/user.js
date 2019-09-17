@@ -28,8 +28,8 @@ router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
         });
     })
     .catch(err => {
-      res.render('user', {errorMessage: "Error loading user."})
-    })
+      res.render('user', {errorMessage: "Error loading user."});
+    });
   
   // res.render('user', { name: 'James Dean' });
 });
