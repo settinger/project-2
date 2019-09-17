@@ -106,8 +106,8 @@ router.post('/update', middleware.ensureLoggedIn, (req, res, next) => {
   User.findByIdAndUpdate(userId, {name, language, location})
     .then(user => {
       data.message = "Preferences updated.";
-      data.currName = req.body.humanName;
-      data.currLang = req.body.language;
+      data.currName = name;
+      data.currLang = language;
       data.currLat = req.body.latitude;
       data.currLng = req.body.longitude;
       res.render('update', data);

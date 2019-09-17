@@ -35,7 +35,9 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{googMapsApiKey}}"></script>
 <script type="text/javascript" src="/scripts/updateMap.js"></script>
-<script type="text/javascript">
+<script>
   const $selector = document.getElementById("register-language");
-  $selector.value="{{currLang}}";
+  $selector.value = "{{currLang}}";
+  const $languageSpan = document.getElementById("selected-language");
+  $languageSpan.innerText = "{{currLang}}";
 </script>
