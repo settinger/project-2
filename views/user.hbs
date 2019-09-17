@@ -1,7 +1,17 @@
-
-
 <h1>User Profile</h1>
 <p>{{name}}</p>
 <h1> Welcome User</h1>
 
+<h2>Surveys available for you to take</h2>
+{{#unless availableSurveys}}
+<p>No surveys available, sorry!</p>
+{{/unless}}
+{{#each availableSurveys}}
+<p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
+{{/each}}
 
+<hr>
+<h2>All surveys</h2>
+{{#each allSurveys}}
+<p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
+{{/each}}

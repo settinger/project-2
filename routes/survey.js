@@ -60,11 +60,16 @@ router.post('/:id', middleware.ensureLoggedIn, (req, res, next) => {
             let surveysTaken = user.surveysTaken;
             surveysTaken.push(surveyId);
             User.findByIdAndUpdate(userId, {surveysTaken})
-            // Update survey in database to include the new response
-            let surveyResponses = survey.responses;
-            surveyResponses.push([...user.location, surveyAnswer]);
-            Survey.findByIdAndUpdate(surveyId, {responses: surveyResponses})
-            res.redirect(`/map/${surveyId}`);
+              .then(() => {
+                // Update survey in database to include the new response
+                let surveyResponses = survey.responses;
+                surveyResponses.push([...user.location, surveyAnswer]);
+                Survey.findByIdAndUpdate(surveyId, {responses: surveyResponses})
+                  .then(() => {
+                    console.log('Survey result saved!')
+                    res.redirect(`/map/${surveyId}`);
+                  });
+              });
           }
         })
         .catch(err => {

@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 const User = require('./../models/user')
+const Survey = require('./../models/survey');
 const allLanguages = require('./../controllers/allLanguages');
 const middleware = require('./../controllers/middleware');
 require('dotenv').config();
@@ -11,9 +12,26 @@ require('dotenv').config();
 Base user page: this should show a list of surveys available
   for taking, and a list of maps available for viewing
 */
-
-router.get('/', (req, res, next) => {
-  res.render('user', { name: 'James Dean' });
+router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
+  // Get user from database
+  User.findById(req.session.user._id)
+    .then(user => {
+      // Find surveys user has taken
+      const surveysTaken = user.surveysTaken;
+      // Get all surveys, filter the ones in user's language
+      Survey.find({}, 'question language')
+        .then(allSurveys => {
+          const availableSurveys = allSurveys.filter(s => {
+            return (s.language === user.language && !surveysTaken.includes(s._id));
+          });
+          res.render('user', {availableSurveys, allSurveys});
+        });
+    })
+    .catch(err => {
+      res.render('user', {errorMessage: "Error loading user."})
+    })
+  
+  // res.render('user', { name: 'James Dean' });
 });
 
 /* Login page */
