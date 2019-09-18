@@ -1,22 +1,26 @@
-<h1>Take a survey</h1>
+<div class="container">
+  <h1>Take a survey</h1>
 
-{{#if errorMessage}}
-  <div class="alert alert-danger">
-    ERROR: {{errorMessage}}
-  </div>
-{{/if}}
-{{#if message}}
-  <div class="alert alert-success">
-    {{message}}
-  </div>
-{{/if}}
+  {{#if errorMessage}}
+    <div class="alert alert-danger">
+      ERROR: {{errorMessage}}
+    </div>
+  {{/if}}
+  {{#if message}}
+    <div class="alert alert-success">
+      {{message}}
+    </div>
+  {{/if}}
 
-<h2>{{question}}</h2>
-<form method="POST" action="/survey/{{_id}}">
-  <div class="form-group">
-    {{{radioSurvey}}}
+<div class="container bg-light" style="padding-bottom: 10px;">
+  <h2>{{question}}</h2>
+  <form method="POST" action="/survey/{{_id}}">
+    <div class="form-group form-check">
+      {{{radioSurvey}}}
+    </div>
+    <button class="button">Submit answer</button>
+  </form>
+<hr>
+  <p><a href="/map/{{_id}}"><span class="button">I do not wish to answer; show me the results</span></a></p>
   </div>
-  <button>Submit answer</button>
-</form>
-
-<p></p><a href="/map/{{_id}}">I do not wish to answer; show me the results</a></p>
+</div>

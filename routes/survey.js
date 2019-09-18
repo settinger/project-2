@@ -18,12 +18,19 @@ router.get('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
   res.render('survey/makeSurvey', {languages: allLanguages});
 });
 router.post('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
-  const question = req.body.question;
+  let question = req.body.question;
+  // Sanitize question
+  question = question.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const language = req.body.language;
   const createdBy = req.session.user._id;
   const options = [];
   for (let response of [req.body.response1, req.body.response2, req.body.response3, req.body.response4, req.body.response5, req.body.response6]) {
-    if (response) options.push(response);
+    if (response) {
+      // Sanitize entry
+      // Replace < > or & with the html codes
+      response = response.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      options.push(response);
+    }
   }
   Survey.create({question, options, createdBy, language})
     .then(survey => {
