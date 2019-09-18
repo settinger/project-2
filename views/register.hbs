@@ -24,13 +24,14 @@
         </div>
         <div class="form-group">
           <label for="register-password">Choose a password</label>
-          <input class="inputfield" type="password" name="password" id="register-password" placeholder="a safe one"
+          <input class="inputfield" type="password" name="password" onkeyup='passwordChecker();' id="register-password" placeholder="a safe one"
             required />
         </div>
         <div class="form-group">
           <label for="register-password">Confirm password</label>
-          <input class="inputfield" type="password" name="passwordmatch" id="register-password" placeholder="make sure it matches"
-            required />
+          <input class="inputfield" type="password"  onkeyup='passwordChecker();' id="confirm-password" placeholder="make sure it matches"
+            required/>
+          <h5 id="message"></h5>
         </div>
         <div class="form-group">
           <label for="register-human-name">Your name</label>
@@ -60,12 +61,36 @@
         id="register-longitude" name="longitude">
       <div id="map" class="reg-map"></div>
       <hr>
-      <button class="button">JOIN NOW</button>
+      <button id="registerbutton" class="button">JOIN NOW</button>
     </div>
     </form>
   </div>
 </div>
 </div>
+
+
+<script>
+
+  const passwordChecker = () => {
+    const button = document.getElementById('registerbutton')
+    if (document.getElementById('register-password').value === document.getElementById('confirm-password').value) {
+      document.getElementById('message').style.color = 'green';
+      document.getElementById('message').innerHTML = 'MATCHED';
+      button.disabled = false;
+      button.style.backgroundColor = '#e8613f';
+        if (document.getElementById('register-password').value === "" && document.getElementById('confirm-password').value === "") {
+          document.getElementById('message').style.color = 'orange';
+          document.getElementById('message').innerHTML = 'CHOOSE PASSWORD';
+          }
+    } else {
+      document.getElementById('message').style.color = 'red';
+      document.getElementById('message').innerHTML = 'PASSWORDS NOT MATCHING';
+      button.disabled = true;
+      button.style.backgroundColor = 'grey';
+    }
+  }
+
+</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{googMapsApiKey}}"></script>
 <script type="text/javascript" src="/scripts/registerMap.js"></script>
