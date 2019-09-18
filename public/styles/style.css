@@ -40,7 +40,7 @@ body {
 a {
   color: #fcfcfc; }
 
-#button {
+.button {
   padding: 7px;
   font-weight: 600;
   margin: 0px 4px;
@@ -48,7 +48,7 @@ a {
   border-style: none;
   border-radius: 5px;
   color: white; }
-  #button:hover {
+  .button:hover {
     background-color: #060038; }
 
 .inputfield {

@@ -1,4 +1,5 @@
-<h1>Make a new survey</h1>
+<div class="container">
+  <h1>Create a new survey</h1>
 
 <form id="make-survey" method="POST" action="/survey/makesurvey">
   <div class="form-group">
@@ -19,11 +20,14 @@
   </div>
   <div class="form-group">
     <label for="response2">Second option: </label>
-    <input class="inputfield" type="text" name="response2" id="response2" required />
+    <input class="inputfield" type="text" name="response2" id="response2" required/>
   </div>
-  <div id="extender"><a href="#">Click to add more responses</a></div>
-  <button>Submit new survey question</button>
+  <div id="extender"><a href="#"><button class="button">Add option</button></a></div>
+  <hr>
+  <button class="button">Submit New Survey</button>
 </form>
+</div>
+
 
 <script>
   let numResponses = 2;
