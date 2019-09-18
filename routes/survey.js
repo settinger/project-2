@@ -43,11 +43,11 @@ router.get('/:id', middleware.ensureLoggedIn, (req, res, next) => {
   console.log(req.session.user._id);
   Survey.findById(surveyId)
     .then(survey => {
-      // Ensure user has not taken survey
+      // Ensure user has not taken survey AND survey is in user's language of interest
       // Nested promises, sorry not sorry
       User.findById(userId)
         .then(user => {
-          if (user.surveysTaken.includes(surveyId)) {
+          if (user.surveysTaken.includes(surveyId) || user.language !== survey.language) {
             res.redirect(`/map/${surveyId}`);
           } else {
             // Don't pass the responses when rendering the survey page (because it might be a huge array)
