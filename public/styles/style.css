@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  box-sizing: border-box;
   padding: 0px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #97defc;
@@ -41,6 +42,7 @@ a {
 
 #button {
   padding: 7px;
+  font-weight: 600;
   margin: 0px 4px;
   background-color: #e8613f;
   border-style: none;
@@ -54,5 +56,11 @@ a {
   border-style: none;
   border-radius: 5px;
   background-color: #dae2f0; }
+
+#frontpage {
+  background-image: url("/images/frontpage.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
