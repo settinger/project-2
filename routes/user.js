@@ -52,8 +52,8 @@ router.post('/login', middleware.ensureLoggedOut, (req, res, next) => {
       req.session.user = {_id: user._id, email: user.email};
       res.redirect('/user');
     })
-    .catch(error => {
-      res.status(401).send('CREDENTIALS WRONG', error);
+    .catch(() => {
+      res.status(401).render('index', {loginError: 'Incorrect email or password, please try again'})
     });
 });
 
