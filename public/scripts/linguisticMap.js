@@ -93,8 +93,8 @@ function drawLegend() {
     option = options[i];
     icon = icons[iconset][i];
     let $newLegendItem = document.createElement("div");
-    $newLegendItem.setAttribute("style", "background-color: white;")
-    $newLegendItem.innerHTML = `<img src="${icon}"/>${option}`;
+    $newLegendItem.setAttribute("style", "background-color: white; padding: 5px; margin: 3px; border-radius: 3px;")
+    $newLegendItem.innerHTML = `<img src="${icon}"/> ${option}`;
     $legend.appendChild($newLegendItem);
   }
   return $legend;

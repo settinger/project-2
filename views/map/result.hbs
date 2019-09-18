@@ -1,22 +1,28 @@
+<div class="container">
+
 <h1>{{question}}</h1>
 
-<div id="legend" style="width: 70vw; margin-left:15vw; margin-bottom: 1em; display: flex; justify-content:space-around"></div>
-<div>
-  <select id="icon-selector">
-    <option value="0">View icons as transparent dots</option>
-    <option value="1">View icons as opaque dots</option>
-  </select>
-</div>
-<div id="map" style="height: 70vh; width: 70vw; margin-left:15vw;"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key={{googMapsApiKey}}"></script>
-<script>
-  const options = {{{surveyOptions}}};
-  const results = {{{surveyResults}}};
-  const icons = [
-    ['/images/bluetransp.png', '/images/greentransp.png', '/images/redtransp.png', '/images/cyantransp.png', '/images/yellowtransp.png', '/images/magentatransp.png', '/images/blacktransp.png'],
-    ['/images/blueopaque.png', '/images/greenopaque.png', '/images/redopaque.png', '/images/cyanopaque.png', '/images/yellowopaque.png', '/images/magentaopaque.png', '/images/blackopaque.png']
-  ]
-  let iconset = 0;
-</script>
-<script type="text/javascript" src="/scripts/linguisticMap.js"></script>
+  <div class="map-and-legend row">
+    <div id="legend" class="col-md-2" style="display: flex; justify-content:flex-end; flex-direction: column;"></div>
+    <div id="map" class="col-md-10" style="height: 70vh; width: 70%;"></div>
+  </div>
+  <div>
+    <select id="icon-selector">
+      <option value="0">View icons as transparent dots</option>
+      <option value="1">View icons as opaque dots</option>
+    </select>
+  </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key={{googMapsApiKey}}"></script>
+  <script>
+    const options = {{{surveyOptions}}};
+    const results = {{{surveyResults}}};
+    const icons = [
+      ['/images/bluetransp.png', '/images/greentransp.png', '/images/redtransp.png', '/images/cyantransp.png', '/images/yellowtransp.png', '/images/magentatransp.png', '/images/blacktransp.png'],
+      ['/images/blueopaque.png', '/images/greenopaque.png', '/images/redopaque.png', '/images/cyanopaque.png', '/images/yellowopaque.png', '/images/magentaopaque.png', '/images/blackopaque.png']
+    ]
+    let iconset = 0;
+  </script>
+  <script type="text/javascript" src="/scripts/linguisticMap.js"></script>
+</div>
