@@ -1,17 +1,38 @@
-<h1>User Profile</h1>
+<div class="container">
 
-<h1> Welcome{{#if name}}, {{name}}{{/if}}!</h1>
+    <div class="container px-lg-5">
+        <div class="row mx-lg-n5">
+            <div class="col py-3 px-lg-5 border bg-light">
 
-<h2>{{language}} surveys available for you to take</h2>
-{{#unless availableSurveys}}
-<p>No surveys available, sorry!</p>
-{{/unless}}
-{{#each availableSurveys}}
-<p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
-{{/each}}
 
-<hr>
-<h2>All surveys</h2>
-{{#each allSurveys}}
-<p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
-{{/each}}
+                <h1> Welcome{{#if name}}, {{name}}{{/if}}!</h1>
+                <h2>{{language}} surveys available for you to take</h2>
+                {{#unless availableSurveys}}
+                <p>No surveys available, sorry!</p>
+                {{/unless}}
+                {{#each availableSurveys}}
+                <p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
+                {{/each}}
+
+            </div>
+
+            <div class="col py-3 px-lg-5 border bg-light">
+                <h2>All surveys</h2>
+                <form>
+                    <select>
+                        <option value="english">English</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="portuguese">Portuguese</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    {{#each allSurveys}}
+    <p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
+    {{/each}}
+
+</div>
