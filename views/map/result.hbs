@@ -3,16 +3,16 @@
 <h1>{{question}}</h1>
 
 
-  <div class="map-and-legend" style="display:flex; flex-direction:row-reverse; justify-content: center;">
-    <div id="map" class="" style="height: 70vh; width: 70vw;"></div>
-    <div id="legend" class="" style="max-width: 20%; display: flex; justify-content:flex-end; flex-direction: column;"></div>
-  </div>
-  <div>
-    <select id="icon-selector">
-      <option value="1">View icons as opaque dots</option>
-      <option value="2">View icons as gradient dots</option>
-      <option value="0">View icons as transparent dots</option>
-    </select>
+  <div class="map-and-legend" style="display:flex; flex-direction:row-reverse; flex-wrap: wrap; justify-content: center;">
+    <div id="map" class="" style="height: 70vh; width: 65%;"></div>
+    <div id="legend" class="" style="width: 14em; display: flex; justify-content:flex-end; flex-direction: column;">
+      <h4>LEGEND</h4>
+      <select id="icon-selector">
+        <option value="1">View icons as opaque dots</option>
+        <option value="2">View icons as gradient dots</option>
+        {{!-- <option value="0">View icons as transparent dots</option> --}}
+      </select>
+    </div>
   </div>
 
   <script src="https://maps.googleapis.com/maps/api/js?key={{googMapsApiKey}}"></script>
