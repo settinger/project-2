@@ -43,16 +43,12 @@ body {
   margin: 20px;
 }
 
-.registration-sections {
-  display: flex;
-  justify-content: space-evenly;
-  #section-map {
-    #map {
-      width: 40vw;
-      height: 60vh;
-    }
-  }
+.reg-map {
+  width: 100%;
+  height: 70vh;
 }
+  
+
 
 a {
   color: $link-color;
