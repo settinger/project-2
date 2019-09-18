@@ -1,8 +1,8 @@
 <h1>User Profile</h1>
 
-<h1> Welcome, {{name}}</h1>
+<h1> Welcome{{#if name}}, {{name}}{{/if}}!</h1>
 
-<h2>Surveys available for you to take</h2>
+<h2>{{language}} surveys available for you to take</h2>
 {{#unless availableSurveys}}
 <p>No surveys available, sorry!</p>
 {{/unless}}

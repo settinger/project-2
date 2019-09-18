@@ -63,29 +63,51 @@ function startMap() {
   return map;
 }
 
+function drawMarkers(markerArray) {
+  // Delete existing markers
+  for (let marker of markerArray) {
+    marker.setMap(null);
+  }
+  markerArray = [];
+  for (let response of results) {
+    let lat = response[0];
+    let lng = response[1];
+    markerArray.push(new google.maps.Marker({
+      position: {
+        lat: lat,
+        lng: lng
+      },
+      map: map,
+      icon: icons[iconset][response[2]],
+      clickable: false
+    }))
+  }
+  return markerArray;
+}
+
+function drawLegend() {
+  // Draw the legend
+  const $legend = document.getElementById('legend');
+  $legend.innerHTML = '';
+  for (let i=0; i<options.length; i++) {
+    option = options[i];
+    icon = icons[iconset][i];
+    let $newLegendItem = document.createElement("div");
+    $newLegendItem.setAttribute("style", "background-color: white;")
+    $newLegendItem.innerHTML = `<img src="${icon}"/>${option}`;
+    $legend.appendChild($newLegendItem);
+  }
+  return $legend;
+}
+
 const map = startMap();
+let markerArray = drawMarkers([]);
+let $legend = drawLegend();
 
-for (let response of results) {
-  let lat = response[0];
-  let lng = response[1];
-  new google.maps.Marker({
-    position: {
-      lat: lat,
-      lng: lng
-    },
-    map: map,
-    icon: icons[response[2]],
-    clickable: false
-  })
-}
 
-// Draw the legend
-const $legend = document.getElementById('legend');
-for (let i=0; i<options.length; i++) {
-  option = options[i];
-  icon = icons[i];
-  let $newLegendItem = document.createElement("div");
-  $newLegendItem.setAttribute("style", "background-color: white;")
-  $newLegendItem.innerHTML = `<img src="${icon}"/>${option}`;
-  $legend.appendChild($newLegendItem);
-}
+const $iconSelector = document.getElementById("icon-selector");
+$iconSelector.addEventListener('change', () => {
+  iconset = parseInt($iconSelector.value);
+  markerArray = drawMarkers(markerArray);
+  $legend = drawLegend();
+});
