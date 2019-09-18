@@ -5,6 +5,7 @@ const router = Router();
 const User = require('./../models/user')
 const Survey = require('./../models/survey');
 const allLanguages = require('./../controllers/allLanguages');
+const filters = ["All languages", ...allLanguages];
 const middleware = require('./../controllers/middleware');
 require('dotenv').config();
 
@@ -26,7 +27,8 @@ router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
           const availableSurveys = allSurveys.filter(s => {
             return (s.language === user.language && !surveysTaken.includes(s._id));
           });
-          res.render('user', {availableSurveys, allSurveys, name, language});
+          const allSurveysJSON = JSON.stringify(allSurveys);
+          res.render('user', {availableSurveys, allSurveys, name, language, filters, allSurveysJSON});
         });
     })
     .catch(err => {

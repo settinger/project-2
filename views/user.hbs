@@ -1,38 +1,65 @@
 <div class="container">
 
-    <div class="container px-lg-5">
-        <div class="row mx-lg-n5">
-            <div class="col py-3 px-lg-5 border bg-light">
+  <div class="container px-lg-5">
+    <div class="row mx-lg-n5">
+      <div class="col py-3 px-lg-5 border bg-light">
 
 
-                <h1> Welcome{{#if name}}, {{name}}{{/if}}!</h1>
-                <h2>{{language}} surveys available for you to take</h2>
-                {{#unless availableSurveys}}
-                <p>No surveys available, sorry!</p>
-                {{/unless}}
-                {{#each availableSurveys}}
-                <p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
-                {{/each}}
+        <h1> Welcome{{#if name}}, {{name}}{{/if}}!</h1>
+        <h2>{{language}} surveys available for you to take</h2>
+        {{#unless availableSurveys}}
+        <p>No surveys available, sorry!</p>
+        {{/unless}}
+        {{#each availableSurveys}}
+        <p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
+        {{/each}}
 
-            </div>
+      </div>
 
-            <div class="col py-3 px-lg-5 border bg-light">
-                <h2>All surveys</h2>
-                <form>
-                    <select>
-                        <option value="english">English</option>
-                        <option value="spanish">Spanish</option>
-                        <option value="portuguese">Portuguese</option>
-                    </select>
-                </form>
-            </div>
+      <div class="col py-3 px-lg-5 border bg-light">
+        <h2 id="filter-header">All surveys</h2>
+        <div class="form-group">
+          <label for="filter-language">Filter by language: </label>
+          <select id="filter-language" name="language">
+            {{#each filters}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
         </div>
+        
+        <div id="surveys-list">
+          {{#each allSurveys}}
+          <p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
+          {{/each}}
+        </div>
+      </div>
     </div>
-
-
-
-    {{#each allSurveys}}
-    <p><a href="/survey/{{this._id}}">{{this.question}}</a></p>
-    {{/each}}
-
+  </div>
 </div>
+
+<script>
+  const allSurveysJSON = {{{allSurveysJSON}}};
+  let language = "All languages";
+  const $header = document.getElementById("filter-header")
+  const $filter = document.getElementById("filter-language");
+  const $list = document.getElementById("surveys-list");
+  $filter.addEventListener('change', () => {
+    language = $filter.value;
+    // Destroy list of surveys
+    $list.innerHTML = '';
+    let surveysToRender;
+    if(language !== "All languages") {
+      // Collect only one language's surveys
+      surveysToRender = allSurveysJSON.filter(s => s.language === language);
+      $header.innerText = `${language} surveys`;
+    } else {
+      // Collect all language surveys
+      surveysToRender = allSurveysJSON;
+      $header.innerText = `All surveys`;
+    }
+    // Render the surveys
+    for (let survey of surveysToRender) {
+      $list.innerHTML += `<p><a href="/survey/${survey._id}">${survey.question}</a></p>\n`;
+    }
+  })
+</script>
