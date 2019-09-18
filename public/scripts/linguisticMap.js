@@ -82,7 +82,10 @@ function drawMarkers(markerArray) {
         lng: lng
       },
       map: map,
-      icon: icons[iconset][response[2]],
+      icon: {
+        url: icons[iconset][response[2]],
+        anchor: new google.maps.Point(5,5)
+      },
       clickable: false
     }))
   }
