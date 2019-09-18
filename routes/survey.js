@@ -17,6 +17,23 @@ router.get('/', (req, res, next) => {
 router.get('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
   res.render('survey/makeSurvey', {languages: allLanguages});
 });
+router.post('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
+  const question = req.body.question;
+  const language = req.body.language;
+  const createdBy = req.session.user._id;
+  const options = [];
+  for (let response of [req.body.response1, req.body.response2, req.body.response3, req.body.response4, req.body.response5, req.body.response6]) {
+    if (response) options.push(response);
+  }
+  Survey.create({question, options, createdBy, language})
+    .then(survey => {
+      res.redirect(`/survey/${survey._id}`);
+    })
+    .catch(
+      res.render('survey/makeSurvey', {languages: allLanguages, errorMessage: "Error generating survey."})
+    )
+  // res.redirect('/survey/makesurvey');
+});
 
 
 /* GET/POST methods for URLs of the form /survey/:id */

@@ -16,6 +16,7 @@ router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
   // Get user from database
   User.findById(req.session.user._id)
     .then(user => {
+      const name = user.name;
       // Find surveys user has taken
       const surveysTaken = user.surveysTaken;
       // Get all surveys, filter the ones in user's language
@@ -24,7 +25,7 @@ router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
           const availableSurveys = allSurveys.filter(s => {
             return (s.language === user.language && !surveysTaken.includes(s._id));
           });
-          res.render('user', {availableSurveys, allSurveys});
+          res.render('user', {availableSurveys, allSurveys, name});
         });
     })
     .catch(err => {
@@ -36,7 +37,7 @@ router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
 
 /* Login page */
 router.get('/login', middleware.ensureLoggedOut, (req, res, next) => {
-  res.render('login');
+  res.render('login', {title: "Log In"});
 });
 
 router.post('/login', middleware.ensureLoggedOut, (req, res, next) => {
