@@ -1,5 +1,5 @@
 $font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$link-color: #fcfcfc;
+$link-color: #fff8f8;
 
 
 body {
@@ -7,14 +7,14 @@ body {
   box-sizing: border-box;
   padding: 0px;
   font-family: $font-sans;
-  background-color: #97defc;
+  background-color: #ffebb8;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 400;
+  font-weight: 300;
 
   .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #4d87e3;
+    background-color: #1c4381;
   }
 
   .navbar-nav{
@@ -49,8 +49,6 @@ body {
   height: 500px;
 }
   
-
-
 a {
   color: $link-color;
 }
@@ -91,9 +89,6 @@ a {
   justify-content: space-between;
   margin: 4vh 0;
 
-  h1 {
-    font-weight: 200;
-  }
   .button2 {
     padding: 10px;
     font-weight: 500;
@@ -102,7 +97,13 @@ a {
     border-style: none;
     border-radius: 10px;
     color: white;
-  
+
     &:hover { background-color: #230149}
   }
+}
+
+.ptitles {
+  font-weight: 200;
+  margin-top: 5vh;
+  margin-bottom: 3vh;
 }
