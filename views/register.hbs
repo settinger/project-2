@@ -16,15 +16,15 @@
 
     <div class="form-group">
       <label for="register-email">Enter your email</label>
-      <input type="email" name="email" id="register-email" placeholder="e-mail address" required />
+      <input class="inputfield" type="email" name="email" id="register-email" placeholder="e-mail address" required />
     </div>
     <div class="form-group">
       <label for="register-password">Choose a password</label>
-      <input type="password" name="password" id="register-password" placeholder="A safe one" required />
+      <input class="inputfield" type="password" name="password" id="register-password" placeholder="A safe one" required />
     </div>
     <div class="form-group">
       <label for="register-human-name">Your name</label>
-      <input type="text" name="humanName" id="register-human-name" placeholder="e.g. Noam Chomsky" />
+      <input class="inputfield" type="text" name="humanName" id="register-human-name" placeholder="e.g. Noam Chomsky" />
     </div>
     <div class="form-group">
       <label for="register-language">Language of interest:</label>
@@ -37,13 +37,13 @@
     <div class="form-group">
       <label for="register-role">Where did you learn <span id="selected-language">your language of interest</span>?
         Drag/zoom the map to move the marker.</label></div>
-  <button id="reg-button">JOIN NOW</button>
+  <button id="button">JOIN NOW</button>
 </div>
 
 <div id="section-map">
 
-    <label for="register-latitude">Latitude: </label><input readonly id="register-latitude" name="latitude" />
-    <label for="register-longitude">Longitude: </label><input readonly id="register-longitude" name="longitude">
+    <label for="register-latitude">Latitude: </label><input class="inputfield" readonly id="register-latitude" name="latitude" />
+    <label for="register-longitude">Longitude: </label><input class="inputfield" readonly id="register-longitude" name="longitude">
     <div id="map"></div>
 
 </div>

@@ -13,17 +13,6 @@ body {
     display: flex;
     justify-content: space-between;
     background-color: #4d87e3;
-
-    #nav-button {
-      padding: 7px;
-      margin: 0px 4px;
-      background-color: #e8613f;
-      border-style: none;
-      border-radius: 5px;
-      color: white;
-
-      &:hover { background-color: #060038}
-    }
   }
 
   .navbar-nav{
@@ -40,26 +29,13 @@ body {
        padding-bottom: 0;
        font-size: 1.5em;
        color: white;
-     }
-  }
-
-}
+     }}}
 
 #section-data {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 60vh;
-  #reg-button {
-      padding: 7px;
-      margin: 0px 4px;
-      background-color: #e8613f;
-      border-style: none;
-      border-radius: 5px;
-      color: white;
-
-      &:hover { background-color: #060038}
-  }
 }
 
 .register-title {
@@ -79,4 +55,22 @@ body {
 
 a {
   color: $link-color;
+}
+
+#button {
+  padding: 7px;
+  margin: 0px 4px;
+  background-color: #e8613f;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+
+  &:hover { background-color: #060038}
+}
+
+.inputfield { 
+  padding: 6px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: #dae2f0;
 }

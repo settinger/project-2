@@ -28,19 +28,19 @@
   </div>
   <div>
     <form class="form-inline my-2 my-lg-0" method="POST" action="/user/logout">
-      <button id="nav-button">LOG OUT</button>
+      <button id="button">LOG OUT</button>
     </form>
   </div>
 {{else}}
  <form class="form-inline" method="POST" action="/user/login">
     <div class="login-bars">
-      <input type="text" class="form-control" placeholder="E-mail" name="email" aria-describedby="basic-addon1" required>
-      <input type="password" class="form-control" placeholder="Password" name="password" aria-describedby="basic-addon1" required>
+      <input type="text" class="form-control inputfield" placeholder="E-mail" name="email" aria-describedby="basic-addon1" required>
+      <input type="password" class="form-control inputfield" placeholder="Password" name="password" aria-describedby="basic-addon1" required>
     </div>
-    <button id="nav-button">LOG IN</button>
+    <button id="button">LOG IN</button>
   </form>
   <form method="GET" action="/user/register">
-    <button id="nav-button">REGISTER</button>
+    <button id="button">REGISTER</button>
 </form>
 {{/if}}
 </nav>
