@@ -147,6 +147,7 @@ router.post('/delete', middleware.ensureLoggedIn, (req, res, next) => {
   const userId = req.session.user._id;
   User.findByIdAndDelete(userId)
     .then(() => {
+      req.session.destroy();
       res.redirect('/');
     })
     .catch(() => {
