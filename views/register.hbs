@@ -12,56 +12,55 @@
 {{/if}}
 
 
-<div class="container px-lg-5">
+<div class="container px-lg-6">
   <div class="row mx-lg-n5">
-    <div class="col-md py-3 px-lg-6 border bg-light">
-      
+    <div class="col-md py-4 px-lg-7 border bg-light">
 
-  <form method="POST" action="/user/register">
-    <div class="form-group">
-      <label for="register-email">Enter your email</label>
-      <input class="inputfield" type="email" name="email" id="register-email" placeholder="e-mail address" required/>
-    </div>
-    <div class="form-group">
-      <label for="register-password">Choose a password</label>
-      <input class="inputfield" type="password" name="password" id="register-password" placeholder="A safe one" required/>
-    </div>
-    <div class="form-group">
-      <label for="register-human-name">Your name</label>
-      <input class="inputfield" type="text" name="humanName" id="register-human-name" placeholder="e.g. Noam Chomsky" />
-    </div>
-    <div class="form-group">
-      <label for="register-language">Language of interest:</label>
-      <select id="register-language" name="language">
-        {{#each languages}}
-        <option value="{{this}}">{{this}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <div class="form-group">
-  <button class="button">JOIN NOW</button>
-</div>
-    </div>
+      <form method="POST" action="/user/register">
+        <div class="form-group">
+          <label for="register-email">Enter your email</label>
+          <input class="inputfield" type="email" name="email" id="register-email" placeholder="e.g. noamchomsky@mit.com"
+            required />
+        </div>
+        <div class="form-group">
+          <label for="register-password">Choose a password</label>
+          <input class="inputfield" type="password" name="password" id="register-password" placeholder="A safe one"
+            required />
+        </div>
+        <div class="form-group">
+          <label for="register-human-name">Your name</label>
+          <input class="inputfield" type="text" name="humanName" id="register-human-name"
+            placeholder="e.g. Noam Chomsky" />
+        </div>
+        <div class="form-group">
+          <label for="register-language">Language of interest:</label>
+          <select id="register-language" name="language">
+            {{#each languages}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+        </div>
+     </div>
 
-    <div class="col py-3 px-lg-5 border bg-light">
-    <label for="register-role"><h5>Where did you learn <span id="selected-language">your language of interest</span>?
-        Move the map to point the marker</h5></label>
-    <label for="register-latitude">Latitude: </label><input class="inputfield" style="width: 80px;" readonly id="register-latitude" name="latitude" />
-    <label for="register-longitude">Longitude: </label><input class="inputfield" style="width: 80px;" readonly id="register-longitude" name="longitude">
-    <div id="map" class="reg-map"></div>
+    <div class="col py-4 px-lg-6 border bg-light">
+      <label for="register-role">
+        <h5>Where did you learn <span id="selected-language">your language of interest</span>?
+          Move the map to point the marker</h5>
+      </label>
+      <label for="register-latitude">Latitude: </label><input class="inputfield" style="width: 80px;" readonly
+        id="register-latitude" name="latitude" />
+      <label for="register-longitude">Longitude: </label><input class="inputfield" style="width: 80px;" readonly
+        id="register-longitude" name="longitude">
+      <div id="map" class="reg-map"></div>
+      <hr>
+      <button class="button">JOIN NOW</button>
     </div>
-
-</form>
-
-    </div>
+    </form>
   </div>
 </div>
-
-
-
-
-
-
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{googMapsApiKey}}"></script>
 <script type="text/javascript" src="/scripts/registerMap.js"></script>
