@@ -142,4 +142,17 @@ router.post('/update', middleware.ensureLoggedIn, (req, res, next) => {
   // res.redirect('/user/update');
 });
 
+/* Delete user account */
+router.post('/delete', middleware.ensureLoggedIn, (req, res, next) => {
+  const userId = req.session.user._id;
+  User.findByIdAndDelete(userId)
+    .then(() => {
+      req.session.destroy();
+      res.redirect('/');
+    })
+    .catch(() => {
+      res.render('update', {errorMessage: "There was a problem deleting the user."})
+    })
+})
+
 module.exports = router;
