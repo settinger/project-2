@@ -55,7 +55,9 @@ a {
   padding: 6px;
   border-style: none;
   border-radius: 5px;
-  background-color: #dae2f0; }
+  background-color: #dae2f0;
+  width: 100%;
+  margin-bottom: 10px; }
 
 #frontpage {
   background-image: url("/images/frontpage.jpg");
