@@ -1,3 +1,7 @@
+
+const $iconSelector = document.getElementById("icon-selector");
+
+
 function startMap() {
   // Define default coordinates
   const euroCenter = { lat: 50,  lng: 10 };
@@ -78,7 +82,10 @@ function drawMarkers(markerArray) {
         lng: lng
       },
       map: map,
-      icon: icons[iconset][response[2]],
+      icon: {
+        url: icons[iconset][response[2]],
+        anchor: new google.maps.Point(5,5)
+      },
       clickable: false
     }))
   }
@@ -88,7 +95,12 @@ function drawMarkers(markerArray) {
 function drawLegend() {
   // Draw the legend
   const $legend = document.getElementById('legend');
-  $legend.innerHTML = '';
+  // Remove current legend entries (but not legend title or selector)
+  for (let i=0; i<options.length; i++) {
+    if($legend.lastChild === $iconSelector) break;
+    $legend.removeChild($legend.lastChild);
+  }
+  // Add new legend entries
   for (let i=0; i<options.length; i++) {
     option = options[i];
     icon = icons[iconset][i];
@@ -105,7 +117,6 @@ let markerArray = drawMarkers([]);
 let $legend = drawLegend();
 
 
-const $iconSelector = document.getElementById("icon-selector");
 $iconSelector.addEventListener('change', () => {
   iconset = parseInt($iconSelector.value);
   markerArray = drawMarkers(markerArray);
