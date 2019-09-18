@@ -2,7 +2,7 @@
 
 const ensureLoggedIn = (req, res, next) => {
   if (!req.session.user) {
-    res.redirect('/user/login');
+    res.redirect('/');
   } else {
     next();
   }
