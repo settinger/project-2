@@ -9,10 +9,10 @@ const filters = ["All languages", ...allLanguages];
 const middleware = require('./../controllers/middleware');
 require('dotenv').config();
 
-/*
-Base user page: this should show a list of surveys available
-  for taking, and a list of maps available for viewing
-*/
+
+// USER PAGE, DISPLAYING AVAILABLE SURVEYS TO TAKE, AND A LIST OF ALL SURVEYS TO VIEW
+
+// USER START PAGE LOADING ALL RELEVANT DATA
 router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
   // Get user from database
   User.findById(req.session.user._id)
@@ -35,14 +35,14 @@ router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
       res.render('user', {errorMessage: "Error loading user."});
     });
   
-  // res.render('user', { name: 'James Dean' });
 });
 
-/* Login page */
+// LOGIN FUNCTIONALITY BAR IN NAV 
 router.get('/login', middleware.ensureLoggedOut, (req, res, next) => {
   res.render('login', {title: "Log In"});
 });
 
+// INITIATE SESSION AFTER LOGIN DETAILS RETRIEVED SUCCESSFULLY
 router.post('/login', middleware.ensureLoggedOut, (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -57,16 +57,14 @@ router.post('/login', middleware.ensureLoggedOut, (req, res, next) => {
     });
 });
 
-/* Logout POST request */
+// CLEAR SESSION AFTER LOG OUT
 router.post('/logout', middleware.ensureLoggedIn, (req, res, next) => {
   req.session.destroy();
   res.redirect('/');
 });
 
-/*
-Registration page: this collects user's email, password,
-  preferred name, preferred language, and location
-*/
+
+// REGISTRATION PAGE, COLLECTS USER MAIL, PASSWORD, NAME, LANGUAGE AND LOCATION
 router.get('/register',  middleware.ensureLoggedOut, (req, res, next) => {
   res.render('register', {languages: allLanguages, googMapsApiKey: process.env.GOOGMAPS_API_KEY});
 });
@@ -90,16 +88,14 @@ router.post('/register', middleware.ensureLoggedOut, (req, res, next) => {
 });
 
 
-/*
-Update-preferences page: This lets the user update their survey
-  language, preferred name, and location
-*/
+
+// ADJUST PREFERENCES PAGE: USER CAN CHANGE SURVEY LANGUAGE, NAME, AND LOCATION
 router.get('/update', middleware.ensureLoggedIn, (req, res, next) => {
   const data = {
     languages: allLanguages,
     googMapsApiKey: process.env.GOOGMAPS_API_KEY
   };
-  // Get user's current preferred name, language, and location
+  // GET USERS CURRENT NAME, LANGUAGE AND LOCATION
   const userId = req.session.user._id;
   User.findById(userId)
     .then(user => {
@@ -115,8 +111,8 @@ router.get('/update', middleware.ensureLoggedIn, (req, res, next) => {
     });
 });
 
+// ENSURE THE CHANGES ARE RETRIEVED...
 router.post('/update', middleware.ensureLoggedIn, (req, res, next) => {
-  // console.log(req.body);
   const data = {
     languages: allLanguages,
     googMapsApiKey: process.env.GOOGMAPS_API_KEY
@@ -126,6 +122,7 @@ router.post('/update', middleware.ensureLoggedIn, (req, res, next) => {
   const language = req.body.language;
   const location = [req.body.latitude, req.body.longitude];
 
+//... AND ACTUALLY ADJUST THEM IN DATABASE
   User.findByIdAndUpdate(userId, {name, language, location})
     .then(user => {
       data.message = "Preferences updated.";
@@ -135,17 +132,17 @@ router.post('/update', middleware.ensureLoggedIn, (req, res, next) => {
       data.currLng = req.body.longitude;
       res.render('update', data);
     })
-    .catch(err => {
+    .catch(() => {
       data.message = "Error updating preferences.";
       res.render('update', data);
     });
-  // res.redirect('/user/update');
 });
 
+// ==== ADMINISTRATION PAGE WHERE ADMINS CAN APPROVE OR REJECT NEW SURVEYS MADE BY USERS
 router.get('/admin', middleware.ensureLoggedIn, (req, res, next) => {
   User.findById(req.session.user._id)
     .then(user => {
-      if(!user.admin) {
+      if (!user.admin) {
         res.redirect('/');
       } else {
         // Get list of all unapproved surveys
@@ -157,9 +154,9 @@ router.get('/admin', middleware.ensureLoggedIn, (req, res, next) => {
           })
       }
     })
-    .catch(err => {
+    .catch(() => {
       res.redirect('/');
-    })
+    });
 });
 router.post('/admin/approve/:id', middleware.ensureLoggedIn, (req, res, next) => {
   const surveyId = req.params.id;
@@ -196,7 +193,7 @@ router.post('/admin/reject/:id', middleware.ensureLoggedIn, (req, res, next) => 
     });
 })
 
-/* Delete user account */
+// ENABLE USERS TO DELETE THEIR ACCOUNT AND PERSONAL DATA
 router.post('/delete', middleware.ensureLoggedIn, (req, res, next) => {
   const userId = req.session.user._id;
   User.findByIdAndDelete(userId)
@@ -206,7 +203,7 @@ router.post('/delete', middleware.ensureLoggedIn, (req, res, next) => {
     })
     .catch(() => {
       res.render('update', {errorMessage: "There was a problem deleting the user."})
-    })
-})
+    });
+});
 
 module.exports = router;
