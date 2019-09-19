@@ -25,6 +25,10 @@ const surveySchema = new mongoose.Schema({
   responses: {
     type: Array,
     default: []
+  },
+  approved: {
+    type: Boolean,
+    default: false
   }
 });
 

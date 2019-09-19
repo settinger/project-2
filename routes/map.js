@@ -10,7 +10,7 @@ const middleware = require('./../controllers/middleware');
 require('dotenv').config();
 
 router.get('/', (req, res, next) => {
-  Survey.find({}, 'question language')
+  Survey.find({approved: true}, 'question language')
     .then(allSurveys => {
       const allSurveysJSON = JSON.stringify(allSurveys);
       res.render('map/mapMain', {allSurveys, filters, allSurveysJSON});

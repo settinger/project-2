@@ -22,7 +22,7 @@ router.get('/', middleware.ensureLoggedIn, (req, res, next) => {
       // Find surveys user has taken
       const surveysTaken = user.surveysTaken;
       // Get all surveys, filter the ones in user's language
-      Survey.find({}, 'question language')
+      Survey.find({approved: true}, 'question language')
         .then(allSurveys => {
           const availableSurveys = allSurveys.filter(s => {
             return (s.language === user.language && !surveysTaken.includes(s._id));
@@ -143,8 +143,58 @@ router.post('/update', middleware.ensureLoggedIn, (req, res, next) => {
 });
 
 router.get('/admin', middleware.ensureLoggedIn, (req, res, next) => {
-  res.render('admin');
+  User.findById(req.session.user._id)
+    .then(user => {
+      if(!user.admin) {
+        res.redirect('/');
+      } else {
+        // Get list of all unapproved surveys
+        // Render each survey with an approve or delete button
+        // Click to approve or delete them
+        Survey.find({$or: [{approved: {$exists: false}}, {approved: false}]}, 'question options language')
+          .then(newSurveys => {
+            res.render('admin', {newSurveys});
+          })
+      }
+    })
+    .catch(err => {
+      res.redirect('/');
+    })
 });
+router.post('/admin/approve/:id', middleware.ensureLoggedIn, (req, res, next) => {
+  const surveyId = req.params.id;
+  User.findById(req.session.user._id)
+    .then(user => {
+      if(!user.admin) {
+        res.redirect('/');
+      } else {
+        Survey.findByIdAndUpdate(surveyId, {approved: true})
+          .then(() => {
+            res.redirect('/user/admin')
+          });
+      }
+    })
+    .catch(() => {
+      res.redirect('/');
+    });
+})
+router.post('/admin/reject/:id', middleware.ensureLoggedIn, (req, res, next) => {
+  const surveyId = req.params.id;
+  User.findById(req.session.user._id)
+    .then(user => {
+      if(!user.admin) {
+        res.redirect('/');
+      } else {
+        Survey.findByIdAndDelete(surveyId)
+          .then(() => {
+            res.redirect('/user/admin')
+          });
+      }
+    })
+    .catch(() => {
+      res.redirect('/');
+    });
+})
 
 /* Delete user account */
 router.post('/delete', middleware.ensureLoggedIn, (req, res, next) => {

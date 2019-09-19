@@ -29,6 +29,10 @@ const schema = new mongoose.Schema({
   surveysTaken: {
     type: [String],
     default: []
+  },
+  admin: {
+    type: Boolean,
+    default: false
   }
 });
 

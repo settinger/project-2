@@ -1,5 +1,18 @@
 <div class="container">
   <h1>Create a new survey</h1>
+  
+{{#if errorMessage}}
+  <div class="alert alert-danger">
+    ERROR: {{errorMessage}}
+  </div>
+{{/if}}
+{{#if message}}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+{{/if}}
+
+
   <div class="bg-light container">
     <form id="make-survey" method="POST" action="/survey/makesurvey">
       <div class="form-group">

@@ -34,11 +34,12 @@ router.post('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
   }
   Survey.create({question, options, createdBy, language})
     .then(survey => {
-      res.redirect(`/survey/${survey._id}`);
+      // res.redirect(`/survey/${survey._id}`);
+      res.render('survey/makeSurvey', {languages: allLanguages, message: "Survey submitted! It is now awaiting admin approval."});
     })
-    .catch(
-      res.render('survey/makeSurvey', {languages: allLanguages, errorMessage: "Error generating survey."})
-    )
+    .catch(() => {
+      res.render('survey/makeSurvey', {languages: allLanguages, errorMessage: "Error generating survey."});
+    });
   // res.redirect('/survey/makesurvey');
 });
 
