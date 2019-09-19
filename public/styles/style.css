@@ -1,57 +1,42 @@
-$font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$link-color: #fff8f8;
-
-
 body {
   margin: 0;
   box-sizing: border-box;
   padding: 0px;
-  font-family: $font-sans;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #ffebb8;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 300;
-
-  .navbar {
+  font-weight: 300; }
+  body .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #5222c9;
-  }
-
-  .navbar-nav{
+    background-color: #5222c9; }
+  body .navbar-nav {
     display: flex;
-    flex-direction: row;
-  }
-
-  .navlinks {
+    flex-direction: row; }
+  body .navlinks {
     display: flex;
-    justify-content: space-between;
-
-    .nav-item {
-       padding-right: 30px;
-       padding-bottom: 0;
-       font-size: 1.5em;
-       color: white;
-     }}}
+    justify-content: space-between; }
+    body .navlinks .nav-item {
+      padding-right: 30px;
+      padding-bottom: 0;
+      font-size: 1.5em;
+      color: white; }
 
 #section-data {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 60vh;
-}
+  height: 60vh; }
 
 .register-title {
-  margin: 20px;
-}
+  margin: 20px; }
 
 .reg-map {
   width: 500px;
-  height: 500px;
-}
-  
+  height: 500px; }
+
 a {
-  color: $link-color;
-}
+  color: #fff8f8; }
 
 .button {
   padding: 7px;
@@ -60,78 +45,66 @@ a {
   background-color: #e8613f;
   border-style: none;
   border-radius: 5px;
-  color: white;
+  color: white; }
+  .button:hover {
+    background-color: #060038; }
 
-  &:hover { background-color: #060038}
-}
-
-.inputfield { 
+.inputfield {
   padding: 6px;
   border-style: none;
   border-radius: 5px;
   background-color: #dae2f0;
   width: 100%;
-  margin-bottom: 10px;
-}
+  margin-bottom: 10px; }
 
 #frontpage {
-  background-image: url('/images/frontpage.jpg');
+  background-image: url("/images/frontpage.jpg");
   background-size: cover;
   height: 95vh;
   max-height: 100vw;
   display: flex;
-  align-items: center;
-
-  .intro {
+  align-items: center; }
+  #frontpage .intro {
     font-weight: 400;
     font-size: 1.3em;
-    font-style: italic;
-  }
-}
+    font-style: italic; }
 
 .page-title {
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
-  margin: 4vh 0;
-
-  .button2 {
+  margin: 4vh 0; }
+  .page-title .button2 {
     padding: 10px;
     font-weight: 500;
     margin: 10px;
     background-color: #2f964e;
     border-style: none;
     border-radius: 10px;
-    color: white;
-
-    &:hover { background-color: #230149}
-  }
-}
+    color: white; }
+    .page-title .button2:hover {
+      background-color: #230149; }
 
 .ptitles {
   font-weight: 200;
   margin-top: 5vh;
-  margin-bottom: 3vh;
-}
+  margin-bottom: 3vh; }
 
 .map-and-legend {
-  display:flex; 
-  flex-flow:row-reverse wrap; 
-  justify-content: center;
-
-  #map {
+  display: flex;
+  flex-flow: row-reverse wrap;
+  justify-content: center; }
+  .map-and-legend #map {
     margin: 10px;
     border: 5px solid black;
-    height: 70vh; 
-    width: 65%
-  };
-
-  #legend {
+    height: 70vh;
+    width: 65%; }
+  .map-and-legend #legend {
     margin: 10px;
-    width: 14em; 
-    display: flex; 
-    justify-content:flex-end; 
-    flex-direction: column;
-  }
-}
+    width: 14em;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column; }
+
+/*# sourceMappingURL=style.css.map */

@@ -9,7 +9,7 @@ const middleware = require('./../controllers/middleware');
 const makeRadioSurvey = require('./../controllers/makeRadioSurvey');
 
 router.get('/', (req, res, next) => {
-  res.render('survey/surveyMain');
+  res.redirect('/map');
 });
 
 
