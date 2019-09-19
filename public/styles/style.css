@@ -32,8 +32,7 @@ body {
   margin: 20px; }
 
 .reg-map {
-  max-width: 100%;
-  width: 100%;
+  width: 500px;
   height: 500px; }
 
 a {
@@ -63,7 +62,12 @@ a {
   background-size: cover;
   height: 95vh;
   max-height: 100vw;
-  width: 100%; }
+  display: flex;
+  align-items: center; }
+  #frontpage .intro {
+    font-weight: 400;
+    font-size: 1.2em;
+    font-style: italic; }
 
 .page-title {
   display: flex;

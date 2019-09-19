@@ -11,12 +11,14 @@
 </div>
 {{/if}}
 
+<h1 class="ptitles"> Surveys taken around the world </h1>
+
   <div class="container px-lg-5">
     <div class="row mx-lg-n5">
       <div class="col-md-12 py-3 px-lg-5 border bg-light">
-        <h2 id="filter-header">All surveys</h2>
+        <h2 id="filter-header">Choose a survey</h2>
         <div class="form-group">
-          <label for="filter-language">Filter by language: </label>
+          <label for="filter-language">Language: </label>
           <select id="filter-language" name="language">
             {{#each filters}}
             <option value="{{this}}">{{this}}</option>
