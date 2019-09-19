@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Create a new survey</h1>
+  <h1 class="ptitles">Create a new survey</h1>
   
 {{#if errorMessage}}
   <div class="alert alert-danger">
@@ -13,7 +13,7 @@
 {{/if}}
 
 
-  <div class="bg-light container">
+  <div class="bg-light container create-sect">
     <form id="make-survey" method="POST" action="/survey/makesurvey">
       <div class="form-group">
         <label for="survey-question">Survey question: </label>

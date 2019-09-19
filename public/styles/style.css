@@ -107,4 +107,8 @@ a {
     justify-content: flex-end;
     flex-direction: column; }
 
+.create-sect {
+  padding: 40px;
+  margin-bottom: 60px; }
+
 /*# sourceMappingURL=style.css.map */
