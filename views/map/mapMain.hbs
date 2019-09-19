@@ -1,0 +1,62 @@
+<div class="container">
+
+{{#if errorMessage}}
+<div class="alert alert-danger">
+  ERROR: {{errorMessage}}
+</div>
+{{/if}}
+{{#if message}}
+<div class="alert alert-success">
+  {{message}}
+</div>
+{{/if}}
+
+  <div class="container px-lg-5">
+    <div class="row mx-lg-n5">
+      <div class="col-md-12 py-3 px-lg-5 border bg-light">
+        <h2 id="filter-header">All surveys</h2>
+        <div class="form-group">
+          <label for="filter-language">Filter by language: </label>
+          <select id="filter-language" name="language">
+            {{#each filters}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        
+        <div id="surveys-list">
+          {{#each allSurveys}}
+          <a href="/map/{{this._id}}"><button class="button">{{this.question}}</button></a>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const allSurveysJSON = {{{allSurveysJSON}}};
+  let language = "All languages";
+  const $header = document.getElementById("filter-header")
+  const $filter = document.getElementById("filter-language");
+  const $list = document.getElementById("surveys-list");
+  $filter.addEventListener('change', () => {
+    language = $filter.value;
+    // Destroy list of surveys
+    $list.innerHTML = '';
+    let surveysToRender;
+    if(language !== "All languages") {
+      // Collect only one language's surveys
+      surveysToRender = allSurveysJSON.filter(s => s.language === language);
+      $header.innerText = `${language} surveys`;
+    } else {
+      // Collect all language surveys
+      surveysToRender = allSurveysJSON;
+      $header.innerText = `All surveys`;
+    }
+    // Render the surveys
+    for (let survey of surveysToRender) {
+      $list.innerHTML += `<a href="/survey/${survey._id}"><button class="button">${survey.question}</button></a>\n`;
+    }
+  })
+</script>

@@ -4,11 +4,22 @@ const { Router } = require('express');
 const router = Router();
 const Survey = require('./../models/survey');
 const User = require('./../models/user');
+const allLanguages = require('./../controllers/allLanguages');
+const filters = ["All languages", ...allLanguages];
 const middleware = require('./../controllers/middleware');
 require('dotenv').config();
 
 router.get('/', (req, res, next) => {
-  res.render('map/mapMain');
+  Survey.find({}, 'question language')
+    .then(allSurveys => {
+      const allSurveysJSON = JSON.stringify(allSurveys);
+      res.render('map/mapMain', {allSurveys, filters, allSurveysJSON});
+    })
+    .catch(err => {
+      res.render('map/mapMain', {errorMessage: "Error fetching maps"});
+    })
+
+  // res.render('map/mapMain');
 })
 
 router.get('/:id', (req, res, next) => {
