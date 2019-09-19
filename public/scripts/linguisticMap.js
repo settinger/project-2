@@ -10,8 +10,8 @@ for (let response of results) {
   avgLat += response[0];
   avgLng += response[1];
 }
-avgLat /= (results.length+1);
-avgLng /= (results.length+1);
+avgLat /= (results.length+1e-3);
+avgLng /= (results.length+1e-3);
 
 const responseCenter = { lat: avgLat, lng: avgLng };
 
