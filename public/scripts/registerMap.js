@@ -18,10 +18,6 @@ function startMap() {
     }
   );
 
-  // map.addListener('click', () => {
-  //   console.log("map clicked");
-  // })
-
   // Add a marker
   const langMarker = new google.maps.Marker({
     position: {
@@ -32,7 +28,6 @@ function startMap() {
   });
   
   map.addListener('center_changed', () => {
-    // console.log(map.getCenter().lat());
     const $latitude = document.getElementById("register-latitude");
     const $longitude = document.getElementById("register-longitude");
     langMarker.setPosition(map.getCenter());

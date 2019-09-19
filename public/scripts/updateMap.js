@@ -1,6 +1,5 @@
 let $langSelector = document.getElementById("register-language");
 let $langSpan = document.getElementById("selected-language");
-// $langSpan.innerText = $langSelector.value;
 $langSelector.addEventListener('change', () => {
   $langSpan.innerText = $langSelector.value;
 })
@@ -12,7 +11,7 @@ let currLng = $longitude.value;
 
 function startMap() {
 
-  // Default coordinates to European geocenter
+  // Default coordinates to user's previously-submitted location
   const center = { lat: parseFloat(currLat),  lng: parseFloat(currLng) };
 
   // Initialize the map
@@ -22,10 +21,6 @@ function startMap() {
       center: center
     }
   );
-
-  // map.addListener('click', () => {
-  //   console.log("map clicked");
-  // })
 
   // Add a marker
   const langMarker = new google.maps.Marker({
