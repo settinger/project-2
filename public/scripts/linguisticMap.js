@@ -1,15 +1,25 @@
 
 const $iconSelector = document.getElementById("icon-selector");
 
+// Define default coordinates
+const euroCenter = { lat: 50,  lng: 10 };
 
-function startMap() {
-  // Define default coordinates
-  const euroCenter = { lat: 50,  lng: 10 };
+let avgLat = 0;
+let avgLng = 0;
+for (let response of results) {
+  avgLat += response[0];
+  avgLng += response[1];
+}
+avgLat /= (results.length+1);
+avgLng /= (results.length+1);
 
+const responseCenter = { lat: avgLat, lng: avgLng };
+
+function startMap(centerPoint = euroCenter) {
   // Initialize the map, apply stark styling
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
-    center: euroCenter,
+    center: centerPoint,
     styles: [{
       "stylers": [
         { "visibility": "off" }
@@ -113,7 +123,7 @@ function drawLegend() {
   return $legend;
 }
 
-const map = startMap();
+const map = startMap(responseCenter);
 let markerArray = drawMarkers([]);
 let $legend = drawLegend();
 
