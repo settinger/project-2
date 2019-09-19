@@ -8,6 +8,7 @@
       <div class="col-md-12 py-3 px-lg-5 border bg-light">
         {{#each newSurveys}}
           <p>{{this._id}}</p>
+          <p>{{this.language}}</p>
           <p>{{this.question}}</p>
           <ul>
             {{#each this.options}}
