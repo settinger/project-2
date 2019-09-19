@@ -18,10 +18,9 @@ router.get('/', (req, res, next) => {
     .catch(err => {
       res.render('map/mapMain', {errorMessage: "Error fetching maps"});
     })
-
-  // res.render('map/mapMain');
 })
 
+// Retrieve map corresponding to a particular survey ID
 router.get('/:id', (req, res, next) => {
   const data = {
     googMapsApiKey: process.env.GOOGMAPS_API_KEY
@@ -30,6 +29,7 @@ router.get('/:id', (req, res, next) => {
   const surveyId = req.params.id;
   Survey.findById(surveyId)
     .then(survey => {
+      // Pass the survey responses as JSON to the frontend renderer
       data.question = survey.question;
       data.surveyResults = JSON.stringify(survey.responses);
       data.surveyOptions = JSON.stringify(survey.options);

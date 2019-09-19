@@ -6,7 +6,7 @@ function startMap() {
   // Define default coordinates
   const euroCenter = { lat: 50,  lng: 10 };
 
-  // Initialize the map
+  // Initialize the map, apply stark styling
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: euroCenter,
@@ -67,6 +67,7 @@ function startMap() {
   return map;
 }
 
+// Draw each response as a colored marker
 function drawMarkers(markerArray) {
   // Delete existing markers
   for (let marker of markerArray) {

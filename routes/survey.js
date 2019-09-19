@@ -19,7 +19,8 @@ router.get('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
 });
 router.post('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
   let question = req.body.question;
-  // Sanitize question
+  // Sanitize question form
+  // Replace < > or & with their html codes
   question = question.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const language = req.body.language;
   const createdBy = req.session.user._id;
@@ -40,7 +41,6 @@ router.post('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
     .catch(() => {
       res.render('survey/makeSurvey', {languages: allLanguages, errorMessage: "Error generating survey."});
     });
-  // res.redirect('/survey/makesurvey');
 });
 
 
@@ -48,7 +48,6 @@ router.post('/makesurvey', middleware.ensureLoggedIn, (req, res, next) => {
 router.get('/:id', middleware.ensureLoggedIn, (req, res, next) => {
   const surveyId = req.params.id;
   const userId = req.session.user._id;
-  console.log(req.session.user._id);
   Survey.findById(surveyId)
     .then(survey => {
       // Ensure user has not taken survey AND survey is in user's language of interest
@@ -96,10 +95,10 @@ router.post('/:id', middleware.ensureLoggedIn, (req, res, next) => {
               .then(() => {
                 // Update survey in database to include the new response
                 let surveyResponses = survey.responses;
-                surveyResponses.push([...user.location, surveyAnswer]);
+                surveyResponses.push([...user.location, surveyAnswer]); // Response in database is an array of form [latitude, longitude, answer]
                 Survey.findByIdAndUpdate(surveyId, {responses: surveyResponses})
                   .then(() => {
-                    console.log('Survey result saved!')
+                    // console.log('Survey result saved!')
                     res.redirect(`/map/${surveyId}`);
                   });
               });
