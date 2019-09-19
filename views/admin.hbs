@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div class="container px-lg-5">
+    <div class="page-title">
+    <h1 class="ptitles"> Welcome{{#if name}}, {{name}}{{/if}}!</h1>
+   <button class="button2"> <a href="/survey/makeSurvey"><h4>Create your own Survey </h4></a></button>
+    </div>
+    <div class="row mx-lg-n5">
+      <div class="col-md-6 py-3 px-lg-5 border bg-light">
+
+        <h2>Your available {{language}} surveys</h2>
+        {{#unless availableSurveys}}
+        <p>No surveys available, sorry!</p>
+        {{/unless}}
+        {{#each availableSurveys}}
+        <a href="/survey/{{this._id}}"><button class="button">{{this.question}}</button></a>
+        {{/each}}
+
+      </div>
+
+      <div class="col-md-6 py-3 px-lg-5 border bg-light">
+        <h2 id="filter-header">All surveys</h2>
+        <div class="form-group">
+          <label for="filter-language">Filter by language: </label>
+          <select id="filter-language" name="language">
+            {{#each filters}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        
+        <div id="surveys-list">
+          {{#each allSurveys}}
+          <a href="/survey/{{this._id}}"><button class="button">{{this.question}}</button></a>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

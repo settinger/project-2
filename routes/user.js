@@ -142,6 +142,10 @@ router.post('/update', middleware.ensureLoggedIn, (req, res, next) => {
   // res.redirect('/user/update');
 });
 
+router.get('/admin', middleware.ensureLoggedIn, (req, res, next) => {
+  res.render('admin');
+});
+
 /* Delete user account */
 router.post('/delete', middleware.ensureLoggedIn, (req, res, next) => {
   const userId = req.session.user._id;
