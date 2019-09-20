@@ -140,3 +140,14 @@ a {
   padding: 40px;
   margin-bottom: 60px;
 }
+
+.homedesc {
+  background-color: #57c1ffA0;
+}
+
+
+@media (max-width: 391.9px) {
+  .homedesc {
+    font-size: .8em;
+  }
+}

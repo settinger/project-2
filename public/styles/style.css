@@ -68,6 +68,8 @@ a {
     font-weight: 400;
     font-size: 1.3em;
     font-style: italic; }
+  #frontpage {
+    background-color: #57c1ff; }
 
 .page-title {
   display: flex;
@@ -110,5 +112,12 @@ a {
 .create-sect {
   padding: 40px;
   margin-bottom: 60px; }
+
+.homedesc {
+  background-color: #57c1ffA0; }
+
+@media (max-width: 391.9px) {
+  .homedesc {
+    font-size: .8em; } }
 
 /*# sourceMappingURL=style.css.map */

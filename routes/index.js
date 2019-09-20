@@ -5,7 +5,7 @@ const router = Router();
 
 
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Omnilect' });
+  res.render('index', { title: 'Omnilect', homepage: true });
 });
 
 
