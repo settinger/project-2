@@ -33,14 +33,14 @@
         </div>
     </div>
 
-    <div class="col py-3 px-lg-5 border bg-light">
+    <div class="col-md py-3 px-lg-5 border bg-light">
       <label for="register-role">Where did you learn <span id="selected-language">your language of interest</span>?
         Drag/zoom the map to move the marker </label>
       <label for="register-latitude">Latitude</label>
       <input class="inputfield" readonly id="register-latitude" name="latitude" value="{{currLat}}" style="width: 80px;" />
       <label for="register-longitude">Longitude</label>
       <input class="inputfield" readonly id="register-longitude" name="longitude" value="{{currLng}}" style="width: 80px;" /><label>
-      <div id="map" class="reg-map"></div>
+      <div id="map" class="reg-map" style="max-width: 90vw;"></div>
     </div>
     </form>
   </div>
