@@ -21,6 +21,8 @@ body {
       padding-bottom: 0;
       font-size: 1.5em;
       color: white; }
+      body .navlinks .nav-item .nav-link:hover {
+        color: crimson; }
 
 #section-data {
   display: flex;
@@ -68,8 +70,6 @@ a {
     font-weight: 400;
     font-size: 1.3em;
     font-style: italic; }
-  #frontpage {
-    background-color: #57c1ff; }
 
 .page-title {
   display: flex;
