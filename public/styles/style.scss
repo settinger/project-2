@@ -25,12 +25,20 @@ body {
   .navlinks {
     display: flex;
     justify-content: space-between;
+    
 
     .nav-item {
        padding-right: 30px;
        padding-bottom: 0;
        font-size: 1.5em;
        color: white;
+
+      .nav-link {
+        &:hover {
+         color: crimson;
+        }
+      }
+
      }}}
 
 #section-data {
